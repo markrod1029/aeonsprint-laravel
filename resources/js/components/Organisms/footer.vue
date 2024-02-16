@@ -174,6 +174,9 @@
     border-radius: 8%;
 }
     
+.product-services , p{
+    color: #565759;
+}
 
     .product-services:hover {
         border-top-color: #1D85BD !important;
@@ -186,5 +189,55 @@
         background-color: #1D85BD ;
         
     }
+
+
+    @media (max-width: 767px) {
+    #service .product-services {
+        width: 80%;
+        margin: 0 auto;
+        max-width: none;
+    }
+    .banner-images{
+
+        width:350px;
+        margin: 0 auto;
+
+    }
+    .banner-text{
+        font-size: 2.5rem;
+    }
+
+    .banner-button {
+        display: flex;
+        flex-direction: row; /* Baguhin ang flex direction papunta sa row */
+        justify-content: space-between; /* I-align ang mga item sa magkabilang gilid */
+    }
+
+    .banner-button button,
+    .banner-button a {
+        width: calc(50% - 5px); /* Gamitin ang calc() para may space sa pagitan ng mga button */
+    }
+    .about-us-text, .contact-us-form{
+        margin: 0 auto;
+        text-align: center;
+        width: 90%;
+    }
+    .about-us-image, .contact-us-image{
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #service .product-services {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+   
+    .about-us-text, .contact-us-form{
+        margin: 0 auto;
+        text-align: center;
+        width: 90%;
+    }
+  
+}
 </style>
 

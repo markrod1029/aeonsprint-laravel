@@ -29,70 +29,36 @@
                    
                  
 
-                <section class="contact-us">
-                    <div id="contact-us" class="grid grid-cols-1 gap-5 my-10 md:grid-cols-2 md:max-w-5xl md:mx-auto about-us-text" style="gap: 2.5rem;  max-width: 74rem;" >
-   
-                        <div class="relative p-16 my-12 hover:shadow-xl:hover">
-                            <h2 class="text-2xl font-bold mb-4">We're Ready, Let's Talk.</h2>
-                                            <form action="submit_form.php" method="POST">
-                                            
-                                                <div class="mb-4">
-                                                    <label for="name" class="block text-sm font-medium text-gray-700">Name *</label>
-                                                    <input type="text" id="name" name="name" required class="mt-1 focus:ring-blue-900 focus:border-blue-900  block w-full h-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                                </div>
-                                                
-                                                <div class="mb-4">
-                                                    <label for="email" class="block text-sm font-medium text-gray-700">Email  *</label>
-                                                    <input type="email" id="email" name="email" required class="mt-1 focus:ring-blue-800 focus:border-blue-800 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                                </div>
-
-                                                <div class="mb-4">
-                                                    <label for="email" class="block text-sm font-medium text-gray-700">Information about the services we offer *</label>
-                                                    <select type="email" id="email" name="email" required class="mt-1 focus:ring-blue-500 focus:border-blue-500  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                                    <option value="" hidden>Please Select</option>
-                                                    <option value="Web App Development">Web App Development</option>
-                                                    <option value="Graphic Design">Graphic Design</option>
-                                                    <option value="Digital Business Card">Digital Business Card</option>
-                                                    <option value="Chatbot Marketing">Chatbot Marketing</option>
-                                                    <option value="SEO marketing">SEO marketing</option>
-                                                    <option value="Conference and Training Event Managment">Conference and Training Event Managment</option>
-                                                    <option value="IT-BPO Consultancy">IT-BPO Consultancy</option>
-                                                    <option value="Startup Development">Startup Development</option>
-
-                                                    </select>
-                                                </div>
-                                                
-                                                
-                                                
-                                                <div class="mb-4">
-                                                    <label for="message" class="block text-sm font-medium text-gray-700">Description  *</label>
-                                                    <textarea id="message" name="message" rows="4" required class="mt-1 focus:ring-blue-500 focus:border-blue-500  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
-                                                </div>
-
-                                                <button class="z-20 inline-flex items-center justify-center px-5 py-2 text-base font-medium leading-6 tracking-wide rounded shadow-sm hover:text-white text-white bg-gradient-to-b from-blue-400 to-blue-500 button whitespace-nowrap active:ring-2 active:ring-brand-600 focus:outline-none" name="submit"><!--[-->Submit<!--]--></button>
-
-                                            </form>
-                        </div>
-
-
-                        <div class="relative p-16 mx-8 my-12 text-center hover:shadow-xl about-us-image">
-                            <div class="flex justify-center mt-5"> <!-- Bagong linya -->
-                                <img src="/storage/images/contact.png" width="500px" alt="Web App Development">
-                            </div> <!-- Bagong linya -->
-                            
-                        </div>
-
+                <section class="services-web-app">
+                    
+                    <div class="pt-2 md:pt-4 mt-4">
+                        <h1 class="center flex flex-col text-grey mb-6 space-y-2 text-3xl  md:mb-4 highlight">
+                            <p>Graphic Design</p>
+                        </h1>
+                                        
                     </div>
 
 
+                    <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+                        <div name="submit" class="flex justify-center mb-2 md:ml-6 md:float-right not-prose">
+                            <!-- <div class="relative w-[290px] h-[300px] aspect-w-3 aspect-h-3 sm:aspect-w-16 sm:aspect-h-9 bottom-4 left-3">
+                                <img class="object-cover transform scale-150" src="/storage/serviceIcon/graphic-tablet-svgrepo-com.svg">
+                                <div class="absolute inset-0"></div>
+                            </div> -->
+                            </div>
+                            <p><!--[-->Low code/No-code Development is the software development approach used for fast development, which requires little to no coding to build web applications and processes.<!--]--></p>
+                            <p><!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--]--></p>
+                            <p><!--[-->What makes this development better is that it increases our clients' agility to respond to the market changes faster. Aside from that, it can maximize their productivity and improve the customer experience on their end and it is also easier to maintain. This also delivers rapid innovation to their business in no time.<!--]--></p>
+                        </div>
 
 
+ 
                 </section>
              
+              
 
 
-
-
+                <contactButton/>
    
                   
    </div>
@@ -106,14 +72,84 @@
 
 <script>
 // Import the Footer and MenuBar components
+// Import the Footer and MenuBar components
 import Footer from '@/components/Organisms/footer.vue';
 import MenuBar from '@/components/Organisms/menubar.vue';
+import contactButton from '@/components/Atoms/button.vue';
 
 export default {
   components: {
     // Register the Footer and MenuBar components
     Footer,
-    MenuBar
+    MenuBar,
+    contactButton
   },
+
+//   methods: {
+//     showWordpressDetails() {
+//       var wordpressSection = document.querySelector('.wordpress');
+//       if (wordpressSection.style.display === 'none') {
+//           wordpressSection.style.display = 'block';
+//       } else {
+//           wordpressSection.style.display = 'none';
+//       }
+//     },
+
+//     showWebAppDetails() {
+//         var webappSection = document.querySelector('.web-app');
+//         if(webappSection.style.display ==='none')
+//         {
+//             webappSection.style.display = 'block';
+//         } else {
+//             webappSection.style.display = 'none';
+            
+//         }
+//     },
+//     showLowCodeDetails(){
+//      var lowcodeSelection = document.querySelector('.low-code');
+
+//      if(lowcodeSelection.style.display === 'none'){
+//         lowcodeSelection.style.display = 'block';
+//      } else {
+//         lowcodeSelection.style.display = 'none';
+//      }
+
+//     },
+
+//     showMaintenanceDetails() {
+//         var maintenanceSelector = document.querySelector('.maintenance');
+//         if(maintenanceSelector.style.display === 'none'){
+//             maintenanceSelector.style.display = 'block';
+
+//         } else {
+//             maintenanceSelector.style.display = 'none';
+
+//         }
+
+//     }
+
+
+//   }
+
+
+
+methods: {
+    showDetails(section) {
+      const sections = ['wordpress', 'webapp', 'lowcode', 'maintenance'];
+      for (const sec of sections) {
+        const el = document.querySelector('.' + sec);
+        if (el) {
+          if (sec === section) {
+            el.style.display = 'block';
+          } else {
+            el.style.display = 'none';
+          }
+        }
+      }
+    }
+  }
 }
+
+
+
 </script>

@@ -52,7 +52,7 @@
                                     </div>
 
                                     <div class="flex flex-col  my-5 mx-auto md:w-1/3 md:mx-0">
-                                        <img src="/storage/svg/3d-target.png" class="object-fill" width="160px" height="200px" alt="launch application">
+                                        <img src="/storage/about-us/3d-target.png" class="object-fill" width="160px" height="200px" alt="launch application">
                                     </div>
 
                                 </div>
@@ -61,7 +61,7 @@
                     </div>
 
 
-                    
+        
                     
                     
 
@@ -72,7 +72,7 @@
                                 <div class="flex flex-col-reverse justify-center h-full md:flex-row md:px-0 md:max-w-5xl md:m-auto">
 
                                     <div class="flex flex-col  my-5 mx-auto md:w-1/3 md:mx-0">
-                                        <img src="/storage/svg/visionary.png" class="object-fill" width="160px" height="200px" alt="launch application">
+                                        <img src="/storage/about-us/visionary.png" class="object-fill" width="160px" height="200px" alt="launch application">
                                     </div>
 
                                     <div class="flex flex-col mx-auto md:w-1/2 md:mx-0">
@@ -106,7 +106,7 @@
                                         </span>
                                     </div>
                                     <div class="flex flex-col my-5 mx-auto md:w-1/3 md:mx-0">
-                                        <img src="/storage/svg/core.png" class="object-fill" width="160px" height="200px" alt="launch application">
+                                        <img src="/storage/about-us/core.png" class="object-fill" width="160px" height="200px" alt="launch application">
                                     </div>
                                 </div>
                             </div>

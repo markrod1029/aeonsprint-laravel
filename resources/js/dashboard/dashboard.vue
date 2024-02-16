@@ -53,7 +53,7 @@
                         <div class="relative p-16 my-12 hover:shadow-xl:hover">
                         <h2 class="text-4xl  leading">We Are Aeonsprint Solution</h2>
                         <p class="pt-4 text-lg text-gray">
-                            <span  style="cursor: pointer;">
+                            <span  class="" style="cursor: pointer;">
                             Aeonsprint Solution stands at the forefront of event management, information technology, and software marketing solutions.
                             With a focus on innovation and efficiency, we provide tailored services to empower businesses across various industries.
                             Our commitment to excellence drives us to develop cutting-edge solutions that streamline event planning, 
@@ -302,53 +302,3 @@ export default {
 
 </script>
 
-<style>
-@media (max-width: 767px) {
-    #service .product-services {
-        width: 80%;
-        margin: 0 auto;
-        max-width: none;
-    }
-    .banner-images{
-
-        width:350px;
-        margin: 0 auto;
-
-    }
-    .banner-text{
-        font-size: 2.5rem;
-    }
-
-    .banner-button {
-        display: flex;
-        flex-direction: row; /* Baguhin ang flex direction papunta sa row */
-        justify-content: space-between; /* I-align ang mga item sa magkabilang gilid */
-    }
-
-    .banner-button button,
-    .banner-button a {
-        width: calc(50% - 5px); /* Gamitin ang calc() para may space sa pagitan ng mga button */
-    }
-    .about-us-text, .contact-us-form{
-        margin: 0 auto;
-        text-align: center;
-        width: 90%;
-    }
-    .about-us-image, .contact-us-image{
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    #service .product-services {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-   
-    .about-us-text, .contact-us-form{
-        margin: 0 auto;
-        text-align: center;
-        width: 90%;
-    }
-  
-}
-</style>

@@ -9,11 +9,11 @@ import ServiceGraphicDesign from './services/graphic-design.vue';
 import ServiceBusinessCard from './services/business-card.vue';
 
 import ServiceChatbot from './services/chatbot.vue';
-import ServiceDigital from './services/graphic-design.vue';
-import ServiceSEO from './services/graphic-design.vue';
-import ServiceCTEM from './services/graphic-design.vue';
-import ServiceConsultancy from './services/graphic-design.vue';
-import ServiceStartup from './services/graphic-design.vue';
+import ServiceDigital from './services/digital-marketing.vue';
+import ServiceSEO from './services/seo.vue';
+import ServiceCTEM from './services/training-event.vue';
+import ServiceConsultancy from './services/consultancy.vue';
+import ServiceStartup from './services/startup.vue';
 
 // import ServiceHome from './services/service-home.vue';
 // Idagdag ang iba pang mga imports para sa iba pang mga serbisyo
