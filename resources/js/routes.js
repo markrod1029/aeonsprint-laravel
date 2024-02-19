@@ -3,7 +3,7 @@ import AboutUs from './abouts/about-us.vue';
 import Project from './projects/project.vue';
 import ContactUs from './contacts/contact-us.vue';
 
-import ServiceWebApp from './services/web-app.vue';
+import ServiceSoftware from './services/software.vue';
 import ServiceGraphicDesign from './services/graphic-design.vue';
 
 import ServiceBusinessCard from './services/business-card.vue';
@@ -13,12 +13,14 @@ import ServiceDigital from './services/digital-marketing.vue';
 import ServiceSEO from './services/seo.vue';
 import ServiceCTEM from './services/training-event.vue';
 import ServiceConsultancy from './services/consultancy.vue';
-import ServiceStartup from './services/startup.vue';
+import ServiceMaintenance from './services/maintenance.vue';
 
 // import ServiceHome from './services/service-home.vue';
 // Idagdag ang iba pang mga imports para sa iba pang mga serbisyo
+import NotFound from './404/error.vue';
 
 export default [
+  
     {
         path: '/',
         name: 'index',
@@ -27,6 +29,12 @@ export default [
             title: 'Home'
         }
     },
+    
+    // {
+    //     path: '*',
+    //     component: NotFound
+
+    // },
     {
         path: '/about-us',
         name: 'about-us',
@@ -46,9 +54,9 @@ export default [
 
     // services
     {
-        path: '/services/web-app-development',
-        name: 'services.web-app-development',
-        component: ServiceWebApp,
+        path: '/services/software-development',
+        name: 'services.software-development',
+        component: ServiceSoftware,
         meta: {
             title: 'Web App Development'
         }
@@ -125,11 +133,11 @@ export default [
 
 
     {
-        path: '/services/startup-development',
-        name: 'services.startup-development',
-        component: ServiceStartup,
+        path: '/services/maintenance-support',
+        name: 'services.maintenance-support',
+        component: ServiceMaintenance,
         meta: {
-            title: 'Startup Development'
+            title: 'Maintenance Support'
         }
     },
 

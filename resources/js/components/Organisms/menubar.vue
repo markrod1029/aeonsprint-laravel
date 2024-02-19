@@ -44,7 +44,7 @@
                                     </a>
                                     <div v-show="showOptions" @mouseenter="cancelHideOptions" @mouseleave="hideOptions" class="absolute left-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg" style="width: max-content;">
                                         <ul class="border-t border-gray-200">
-                                            <li><router-link to="/services/web-app-development" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu" style="white-space: nowrap;">Web App Development</router-link></li>
+                                            <li><router-link to="/services/software-development" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu" style="white-space: nowrap;">Software Development</router-link></li>
                                             <hr class="border-gray-200"> <!-- Line between options -->
                                             <li><router-link to="/services/graphic-design" href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu" style="white-space: nowrap;"> Graphic Design</router-link></li>
                                             <hr class="border-gray-200"> <!-- Line between options -->
@@ -60,7 +60,7 @@
                                             <hr class="border-gray-200"> <!-- Line between options -->
                                             <li><router-link to="/services/it-bpo-consultancy" href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu" style="white-space: nowrap;"> IT-BPO Consultancy</router-link></li>
                                             <hr class="border-gray-200"> <!-- Line between options -->
-                                            <li><router-link to="/services/startup-development" href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu"  style="white-space: nowrap;">  Startup Development</router-link></li>
+                                            <li><router-link to="/services/maintenance-support" href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu"  style="white-space: nowrap;">  Maintenance Support</router-link></li>
 
                                         </ul>
                                     </div>

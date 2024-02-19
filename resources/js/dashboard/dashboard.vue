@@ -97,7 +97,7 @@
                                     <img src="/storage/serviceIcon/581062-200.png" width="100px" alt="Web App Development">
                                 </div>
                                 <h2 class="text-2xl font-bold leading">
-                                    Web App Development
+                                    Software Development
                                 </h2>
                                 <p class="pt-4 text-2lg text-gray">Gather information to understand your present situation and goals
                                     Gather information to understand your present situation and goals
@@ -223,10 +223,10 @@
                     <div class=" bg-white shadow-lg rounded-md  product-services" >
                         <div class="relative p-16 mx-8 my-12 text-center hover:shadow-xl">
                             <div class="flex justify-center"> <!-- Bagong linya -->
-                                <img src="/storage/serviceIcon/startup-rocket-svgrepo-com.svg"  width="100px" alt="Web App Development">
+                                <img src="/storage/serviceIcon/maintenance-electric-car-svgrepo-com.svg"  width="100px" alt="Web App Development">
                             </div> <!-- Bagong linya -->
                             <h2 class="text-2xl font-bold leading">
-                                Startup Development
+                                Maintenance & Support
                             </h2>
                             <p class="pt-4 text-2lg text-gray" >Gather information to understand your present situation and goals
                                 Gather information to understand your present situation and goals
