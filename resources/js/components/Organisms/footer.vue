@@ -14,7 +14,7 @@
                 <div class="col-span-2 md:col-span-2">
                     <div class="flex flex-col items-center md:-tranzinc-y-4 ">
                         <img id="logo" src="/storage/images/aeonsprint-logo1.png" alt="Aeonsprint Solution" width="150" height="250" class="mx-auto" >
-                        <span class="text-3xl font-extrabold " >Aeonsprint Solution</span>
+                        <span class="text-3xl font-bold " >Aeonsprint Solution</span>
                         <span class="uppercase trking-wide" >Software Marketing Solutions</span>
 
                         <span class="mt-3 text-center">
@@ -28,7 +28,7 @@
                 
                 <div class="col-span-2 md:col-span-2">
                     <div class="flex flex-col items-center md:-tranzinc-y-4 ">
-                        <h4 class="text-xl font-bold ">
+                        <h4 class="text-lg font-bold ">
                             <span class="relative">Userful Links</span>
                         </h4>
                         <ul class="flex flex-col pb-10 mt-8 gap-y-3 md:pb-0 items-center ">
@@ -67,7 +67,7 @@
                 
             <div class="col-span-2 md:col-span-1">
                 <div class="flex flex-col items-center md:-tranzinc-y-4 ">
-                    <h4 class="text-xl font-bold ">
+                    <h4 class="text-lg font-bold ">
                         <span class="relative">Follow Us</span>
                     </h4>
                     <ul class="flex flex-col pb-10 mt-8 gap-y-3 md:pb-0">

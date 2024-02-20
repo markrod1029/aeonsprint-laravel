@@ -2,28 +2,27 @@
     <MenuBar/>
 
     <div id="main-wrapper">
-                   <section id="hero" >
+                  <section id="hero" >
                        <div id="hero" class="relative h-48 " style="height:14rem">
                         <div class="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-zinc-50" ></div>
                            <div class="relative inset-0 md:top-[30%] z-30" >
-                               <div class=" " >
-                                   <div class="flex flex-col-reverse justify-center m-auto md:flex-row md:px-0 md:max-w-5xl md:m-auto" >
-                                       <div class=" mx-auto md:w-2/2 md:mx-0" >
-                                           <h6 class=" mt-5 text-3xl font-bold tracking-wide md:text-4xl md:text-left leading gap-y-2" >
+                                   <div class="flex flex-col-reverse justify-center m-auto md:flex-row md:px-0 md:max-w-6xl md:m-auto" >
+                                       <div class=" mx-auto md:w-4/2 md:mx-0" >
+                                           <h6 class=" mt-5 text-2xl font-bold tracking-wide md:text-4xl md:text-left leading gap-y-2" >
                                             <span class=" text-center text-transparent bg-clip-text" style="color:#1D85BD;">
-                                                Ascend touch us. Get in  touch
+                                              Elevating Brands through Digital Marketing Mastery
                                                </span>
                                            </h6>
                                           
                                        </div>
                                       
                                    </div>
-                               </div>
                            </div>
                        
                            
                        </div>
                    </section>
+
 
 
                    

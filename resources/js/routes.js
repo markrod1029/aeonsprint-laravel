@@ -1,13 +1,12 @@
-import Dashboard from './dashboard/dashboard.vue';
+import Dashboard from './dashboard/index.vue';
 import AboutUs from './abouts/about-us.vue';
 import Project from './projects/project.vue';
 import ContactUs from './contacts/contact-us.vue';
 
+// Services
 import ServiceSoftware from './services/software.vue';
 import ServiceGraphicDesign from './services/graphic-design.vue';
-
 import ServiceBusinessCard from './services/business-card.vue';
-
 import ServiceChatbot from './services/chatbot.vue';
 import ServiceDigital from './services/digital-marketing.vue';
 import ServiceSEO from './services/seo.vue';
@@ -15,10 +14,15 @@ import ServiceCTEM from './services/training-event.vue';
 import ServiceConsultancy from './services/consultancy.vue';
 import ServiceMaintenance from './services/maintenance.vue';
 
-// import ServiceHome from './services/service-home.vue';
-// Idagdag ang iba pang mga imports para sa iba pang mga serbisyo
-import NotFound from './404/error.vue';
+// projects
+import ProjectTripidkard from './projects/tripidkard.vue';
 
+// import NotFound from './404/error.vue';
+
+
+// Admin Dashboard
+
+import AdminDashboard from './pages/admin/dashboard.vue';
 export default [
   
     {
@@ -50,6 +54,17 @@ export default [
         meta: {
             title: 'Project'
         }
+        
+    },
+
+    {
+        path: '/projects/tripidkard',
+        name: 'projects.tripidkard',
+        component: ProjectTripidkard,
+        meta: {
+            title: 'Tripidkard Project '
+        }
+        
     },
 
     // services
@@ -150,5 +165,22 @@ export default [
         meta: {
             title: 'Contact Us'
         }
-    }
+    },
+
+  
+
+
+    // admin Dashboard
+
+    {
+        path: '/admin/dashboard',
+        name: 'admin.dashboard',
+        component: AdminDashboard,
+        meta: {
+            title: 'Admin Dashboard'
+        }
+    },
+
+
+
 ];

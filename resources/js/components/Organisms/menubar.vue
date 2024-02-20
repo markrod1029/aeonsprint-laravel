@@ -19,17 +19,18 @@
                     <div class="flex items-center justify-end h-full" >
                         <div class="flex items-center md:hidden" >
                             <button >
-                                <img src="/_nuxt/menu.fe80d7c5.svg" alt="hamburger-menu" class="w-8 h-8 p-1 bg-gray-100 rounded-sm" >
+                                <font-awesome-icon :icon="['fas', 'bars']" class="w-8 h-8 p-1 bg-gray-100 rounded-sm" />
                             </button>
                         </div>
-                        <div class="items-center hidden h-full tracking-wider md:flex gap-x-14" >
+                        
+                        <div class="items-center hidden h-full tracking-wider md:flex gap-x-14" style="font-size:17px; font-weight:600">
     
-                            <ul id="desktop-links" class="flex items-center h-full gap-x-12 " style="font-size:17px; font-weight:600" >
+                            <ul id="desktop-links" class="flex items-center h-full gap-x-12 "  >
     
                                 <li class="flex items-center h-full "  >
     
                                     <router-link  to="/about-us" class="flex items-center tracking-wide desktop-link text-decoration-none"   >
-                                        <h3 style="font-size:14px;" class="text-xs font-bold uppercase tracking-whide">About Us </h3>
+                                        <h3 style="font-size:14px;" class=" font-bold uppercase tracking-whide" >About Us </h3>
     
                                     </router-link>
                                 </li>
@@ -37,7 +38,7 @@
                                    
                                 <li class="relative" @mouseenter="showOptions = true" @mouseleave="hideOptions">
                                     <a class="flex items-center tracking-wide desktop-link text-decoration-none">
-                                        <h3 style="font-size:14px;" class="text-xs font-bold uppercase tracking-whide">Services</h3>
+                                        <h3 style="font-size:14px;" class=" font-bold uppercase tracking-whide">Services</h3>
                                         <svg class="w-4 h-4 ml-1 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="transform: rotate(180deg);">
                                             <path d="M10 3a.75.75 0 01.53.22l4.25 4.25a.75.75 0 11-1.06 1.06L11 5.06v9.69a.75.75 0 01-1.5 0V5.06L6.28 8.53a.75.75 0 11-1.06-1.06l4.25-4.25A.75.75 0 0110 3z"/>
                                         </svg>
@@ -56,7 +57,7 @@
                                             <hr class="border-gray-200"> <!-- Line between options -->
                                             <li><router-link to="/services/seo-marketing" href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu" style="white-space: nowrap;"> Seo Marketing</router-link></li>
                                             <hr class="border-gray-200"> <!-- Line between options -->
-                                            <li><router-link to="/services/conference-and-training-event-managment" href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu" style="white-space: nowrap;">Conporence and Training Event Managment</router-link></li>
+                                            <li><router-link to="/services/conference-and-training-event-managment" href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu" style="white-space: nowrap;">Conference and Training Event Managment</router-link></li>
                                             <hr class="border-gray-200"> <!-- Line between options -->
                                             <li><router-link to="/services/it-bpo-consultancy" href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white text-decoration-none  services-menu" style="white-space: nowrap;"> IT-BPO Consultancy</router-link></li>
                                             <hr class="border-gray-200"> <!-- Line between options -->
@@ -69,16 +70,15 @@
 
                                 <li class="flex items-center h-full" >
                                     <router-link to="/projects" class="flex items-center tracking-wide desktop-link text-decoration-none"   >
-                                        <h3 style="font-size:14px;" class="text-xs font-bold uppercase tracking-whide">Projects</h3>
+                                        <h3 style="font-size:14px;" class=" font-bold uppercase tracking-whide">Projects</h3>
     
                                     </router-link>
     
                                 </li>
                            
 
+                                
 
-
-                                    
                             
                                     
                                 <!-- <li class="flex items-center h-full">
@@ -87,9 +87,17 @@
                                     </router-link>
                                 </li>  -->
                             </ul>
-                            <router-link to="/contact-us" class="px-2 py-1.5 rounded cta hover:text-blue-500  text-decoration-none "  >
-                                <h3 style="font-size:14px;" class="text-xs font-bold uppercase tracking-whide">Contact Us </h3>
-                            </router-link>
+                          
+                            <li class="flex items-center h-full" >
+                                    <router-link to="/contact-us" class="flex items-center tracking-wide desktop-link text-decoration-none"   >
+                                        <h3 style="font-size:14px;" class=" font-bold uppercase tracking-whide">Contact Us</h3>
+    
+                                    </router-link>
+    
+                                </li>
+
+                          
+                           
                         </div>
                     </div>
                 </div>

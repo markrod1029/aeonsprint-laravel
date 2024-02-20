@@ -2,23 +2,21 @@
     <MenuBar/>
 
     <div id="main-wrapper">
-                   <section id="hero" >
+                    <section id="hero" >
                        <div id="hero" class="relative h-48 " style="height:14rem">
                         <div class="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-zinc-50" ></div>
                            <div class="relative inset-0 md:top-[30%] z-30" >
-                               <div class=" " >
-                                   <div class="flex flex-col-reverse justify-center m-auto md:flex-row md:px-0 md:max-w-5xl md:m-auto" >
-                                       <div class=" mx-auto md:w-2/2 md:mx-0" >
-                                           <h6 class=" mt-5 text-3xl font-bold tracking-wide md:text-4xl md:text-left leading gap-y-2" >
+                                   <div class="flex flex-col-reverse justify-center m-auto md:flex-row md:px-0 md:max-w-6xl md:m-auto" >
+                                       <div class=" mx-auto md:w-4/2 md:mx-0" >
+                                           <h6 class=" mt-5 text-2xl font-bold tracking-wide md:text-4xl md:text-left leading gap-y-2" >
                                             <span class=" text-center text-transparent bg-clip-text" style="color:#1D85BD;">
-                                                Ascend touch us. Get in  touch
+                                                Connect With Us, Let's Start a Conversation
                                                </span>
                                            </h6>
                                           
                                        </div>
                                       
                                    </div>
-                               </div>
                            </div>
                        
                            
@@ -28,7 +26,7 @@
                    <div id="service" class="grid grid-cols-1  my-10 md:grid-cols-3 md:max-w-5xl md:mx-auto" style="gap: 2.5rem;  max-width: 74rem;" >
    
                             
-                <div class="bg-gray  rounded-md product-services" >
+                <div class="bg-white  rounded-md " >
                     <div class="relative my-12 text-center hover:shadow-xl:hover">
                         <h2 class="text-2xl font-bold leading">
                             Address
@@ -41,7 +39,7 @@
 
                 
 
-                <div class=" bg-white  rounded-md  product-services" >
+                <div class=" bg-white  rounded-md " >
                 <div class="relative  my-12 text-center hover:shadow-xl">
                     
                     <h2 class="text-2xl font-bold leading">
@@ -54,7 +52,7 @@
                 </div>
                 </div>
 
-                <div class=" bg-white  rounded-md product-services">
+                <div class=" bg-white  rounded-md">
                 <div class="relative my-12 text-center hover:shadow-xl ">
                     <h2 class="text-2xl font-bold leading">
                         Call Us
@@ -90,16 +88,16 @@
 
                                                 <div class="mb-4">
                                                     <label for="email" class="block text-sm font-medium text-gray-700">Information about the services we offer *</label>
-                                                    <select type="email" id="email" name="email" required class="mt-1 focus:ring-blue-500 focus:border-blue-500  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    <select type="email" id="email" name="email" required class="mt-1 focus:ring-blue-500 focus:border-blue-500  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" >
                                                     <option value="" hidden>Please Select</option>
-                                                    <option value="Web App Development">Web App Development</option>
+                                                    <option value="Web App Development">Software Development</option>
                                                     <option value="Graphic Design">Graphic Design</option>
                                                     <option value="Digital Business Card">Digital Business Card</option>
                                                     <option value="Chatbot Marketing">Chatbot Marketing</option>
                                                     <option value="SEO marketing">SEO marketing</option>
                                                     <option value="Conference and Training Event Managment">Conference and Training Event Managment</option>
                                                     <option value="IT-BPO Consultancy">IT-BPO Consultancy</option>
-                                                    <option value="Startup Development">Startup Development</option>
+                                                    <option value="Startup Development">Maintenance & Support</option>
 
                                                     </select>
                                                 </div>
