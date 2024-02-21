@@ -16,4 +16,3 @@
   <style scoped>
   /* Add component-specific styles */
   </style>
-  

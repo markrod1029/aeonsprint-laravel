@@ -1,30 +1,83 @@
 <template>
-    <!-- <MenuBar/> -->
 
-    <div>
-    <!-- Button -->
-    <button @click="openModal" class="bg-black text-white font-bold py-2 px-4 rounded border border-blue-500 hover:bg-blue-500 hover:text-black">
-      Buksan ang Modal
-    </button>
 
-    <!-- Modal -->
-    <div v-if="isModalOpen" class="fixed inset-0 flex items-center justify-center z-50 shadow-lg">
-      <div class="fixed inset-0 bg-black opacity-50"></div>
+  <MenuBar/>
 
-      <div class="absolute top-1/4 left-1/4 right-1/4 bottom-1/4 bg-white p-8 rounded shadow-xl">
-        <h2 class="text-xl font-bold mb-4">Modal Title</h2>
-        <p class="mb-4">Ito ay ang laman ng modal. Maaari mong lagyan ito ng anumang nilalaman na nais mo.</p>
+  <div id="main-wrapper">
+                  <section id="hero" >
+                     <div id="hero" class="relative h-48 " style="height:14rem">
+                      <div class="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-zinc-50" ></div>
+                         <div class="relative inset-0 md:top-[30%] z-30" >
+                                 <div class="flex flex-col-reverse justify-center m-auto md:flex-row md:px-0 md:max-w-6xl md:m-auto" >
+                                     <div class=" mx-auto md:w-4/2 md:mx-0" >
+                                         <h6 class=" mt-5 text-2xl font-bold tracking-wide md:text-4xl md:text-left leading gap-y-2" >
+                                          <span class=" text-center text-transparent bg-clip-text" style="color:#1D85BD;">
+                                           Aeonsprint Tripidkard
+                                             </span>
+                                         </h6>
+                                        
+                                     </div>
+                                    
+                                 </div>
+                         </div>
+                     
+                         
+                     </div>
+                 </section>
+                 
 
-        <!-- Close button -->
-        <button @click="closeModal" class="absolute top-0 right-0 m-2 text-black hover:text-blue-500 focus:outline-none">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
+              <section class="project-tripidkard max-w-5xl mx-auto">
+                  
+                  <div class=" md:pt-4">
+                      <h1 class="center flex flex-col  space-y-2 text-2xl  md:mb-4 ">
+                          <p>Chatbot Marketing</p>
+                      </h1>
+                                      
+                  </div>
 
+                  <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+                      <div name="submit" class="flex justify-center mb-2 md:ml-6 md:float-right not-prose">
+                          <!-- <div class="relative w-[290px] h-[300px] aspect-w-3 aspect-h-3 sm:aspect-w-16 sm:aspect-h-9 bottom-4 left-3">
+                              <img class="object-cover transform scale-150" src="/storage/serviceIcon/graphic-tablet-svgrepo-com.svg">
+                              <div class="absolute inset-0"></div>
+                          </div> -->
+                          </div>
+                          <p><!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--]--></p>
+                      </div>
+
+
+                      <div class=" md:pt-4">
+                      <h1 class="center flex flex-col  space-y-2 text-2xl  md:mb-4 ">
+                          <p>Chatbot Marketing</p>
+                      </h1>
+                                      
+                  </div>
+
+                  <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+                      <div name="submit" class="flex justify-center mb-2 md:ml-6 md:float-right not-prose">
+                          <!-- <div class="relative w-[290px] h-[300px] aspect-w-3 aspect-h-3 sm:aspect-w-16 sm:aspect-h-9 bottom-4 left-3">
+                              <img class="object-cover transform scale-150" src="/storage/serviceIcon/graphic-tablet-svgrepo-com.svg">
+                              <div class="absolute inset-0"></div>
+                          </div> -->
+                          </div>
+                          <p><!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--]--></p>
+                      </div>
+
+
+
+              </section>
+           
+            
+
+
+              <contactButton />       
+ 
+                
+ </div>
+ 
+ 
+
+ <Footer />
 
 
 </template>
@@ -36,28 +89,15 @@ import MenuBar from '@/components/Organisms/menubar.vue';
 import contactButton from '@/components/Atoms/button.vue';
 
 export default {
-  components: {
-    // Register the Footer and MenuBar components
-    Footer,
-    MenuBar,
-    contactButton
-  },
-
-  data() {
-    return {
-      isModalOpen: false
-    };
-  },
-  methods: {
-    openModal() {
-      this.isModalOpen = true;
-    },
-    closeModal() {
-      this.isModalOpen = false;
-    }
-  }
+components: {
+  // Register the Footer and MenuBar components
+  Footer,
+  MenuBar,
+  contactButton
+},
 
 }
 
-</script>
 
+
+</script>
