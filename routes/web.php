@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ServiceController;
 
 use App\Http\Controllers\ApplicationController;
 
@@ -21,8 +22,11 @@ Route::get('/', function(){
     return view('dashboard');
 });
 
-Route::get('/admin/dashboard', function(){
-    return view('admin.app'); // Gamitin ang 'admin.app' na view dito
-});
+// Route::get('/admin/dashboard', function(){
+//     return view('admin.app'); 
+// });
 
-// Route::get('{view}', ApplicationController::class)->where('view', '(.*)');
+Route::get('/api/services', [ServiceController::class, 'index']);
+
+
+Route::get('{view}', ApplicationController::class)->where('view', '(.*)');

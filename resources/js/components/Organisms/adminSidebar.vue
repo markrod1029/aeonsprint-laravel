@@ -38,15 +38,15 @@
             <li class="nav-item">
                 <router-link to="/admin/projects" active-class="active" class="nav-link ">
                     <i class="nav-icon fas fa-calendar"></i>
-                        <p class="text-white">Project</p>
+                        <p class="text-white">Projects</p>
                 </router-link>
             </li>
 
 
             <li class="nav-item">
-                <router-link to="/admin/users" active-class="active" class="nav-link">
+                <router-link to="/admin/services" active-class="active" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
-                        <p class="text-white" >User</p>
+                        <p class="text-white" >Services</p>
                 </router-link>
             </li>
 

@@ -24,6 +24,7 @@ import ProjectTripidkard from './projects/tripidkard.vue';
 
 import AdminDashboard from './pages/admin/dashboard.vue';
 import AdminProjects from './pages/admin/projects.vue';
+import AdminServices from './pages/admin/services.vue';
 export default [
   
     {
@@ -188,6 +189,15 @@ export default [
         component: AdminProjects,
         meta: {
             title: 'Admin Projects'
+        }
+    },
+
+    {
+        path: '/admin/services',
+        name: 'admin.services',
+        component: AdminServices,
+        meta: {
+            title: 'Admin Services'
         }
     },
 

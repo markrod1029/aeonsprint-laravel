@@ -2,11 +2,13 @@
 <script setup>
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
+import { Form, Field, useIsFormDirty} from 'vee-validate';
 
 let services = ref([]);
+let From =  ref(null);
 
 let getService = () => {
-    axios.get('/api/project')
+    axios.get('/api/services')
         .then((response) => {
             services.value = response.data;
 
@@ -15,6 +17,20 @@ let getService = () => {
             console.error('Error fetching services:', error);
         });
 };
+
+
+let createService = () => {
+    axios.post('/api/services', form)
+    .then((response) => {
+        services.value.push(response.data)
+        form.name = '',
+        $('#userFormModal').modal('hide');
+
+    })
+}
+
+
+
 
 onMounted(() => {
     getService();
@@ -120,20 +136,24 @@ onMounted(() => {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <Form ref="form" @submit="createService"  validation-schema="schema" v-slot="{errors}" >
+
       <div class="modal-body">
-        <form>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Services Name:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label "  >Services Name:</label>
+            <input type="text" class="form-control" :class="{'is-invalid': errors.name}" id="recipient-name">
+            <span class="invalid-feedback" >{{ errors.name }}</span>
+
           </div>
        
        
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary bg-primary">Send message</button>
       </div>
+    </Form>
+
     </div>
   </div>
 </div>
