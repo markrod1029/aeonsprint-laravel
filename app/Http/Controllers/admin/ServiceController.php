@@ -17,4 +17,11 @@ class ServiceController extends Controller
 
         return $services;  
     }
+
+    public function store(){
+
+        return Service::create([
+            'name' => request('name'),
+        ]);
+    }
 }

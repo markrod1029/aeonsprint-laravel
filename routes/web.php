@@ -28,5 +28,7 @@ Route::get('/', function(){
 
 Route::get('/api/services', [ServiceController::class, 'index']);
 
+Route::post('/api/services', [ServiceController::class, 'store']);
+
 
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)');
