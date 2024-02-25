@@ -1,10 +1,12 @@
 <!-- Script setup -->
 <script setup>
 import axios from 'axios';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, reactive } from 'vue';
 
 let services = ref([]);
-let form = ref(null);
+let form = reactive({
+    name: '',
+});
 
 let getService = () => {
     axios.get('/api/services')
@@ -17,22 +19,14 @@ let getService = () => {
 };
 
 let createService = () => {
-    // Tiyakin na ang form ay mayroong value bago ito gamitin
-    if (!form.value || !form.value.name) {
-        console.error('Form or form name is not set.');
-        return;
-    }
-
-    axios.post('/api/services', form.value)
-        .then((response) => {
-            services.value.push(response.data);
+    axios.post('/api/services', form)
+      .then((response) => {
+            services.value.unshift(response.data);
             form.value.name = '';
             $('#exampleModal').modal('hide');
-        })
-        .catch((error) => {
-            console.error('Error creating service:', error);
         });
 };
+
 
 
 onMounted(() => {
@@ -119,17 +113,16 @@ onMounted(() => {
                 </div>
 
                 <!-- Form -->
-                <form @submit.prevent="createService">
+                <form >
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Services Name:</label>
-                            <input type="text" name="name" class="form-control" id="name" required>
-
+                            <input type="text" v-model="form.name" name="name" class="form-control" id="name">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary bg-primary">Save</button>
+                        <button @click="createService" type="submit" class="btn btn-primary bg-primary">Save</button>
                     </div>
                 </form>
             </div>
