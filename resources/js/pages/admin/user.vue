@@ -1,36 +1,24 @@
 <!-- Script setup -->
 <script setup>
+
 import axios from 'axios';
-import { onMounted, ref, reactive } from 'vue';
+import {onMounted, ref } from 'vue';
 
-let services = ref([]);
-let form = reactive({
-    name: '',
-});
-
-let getService = () => {
-    axios.get('/api/services')
-        .then((response) => {
-            services.value = response.data;
-        })
-        .catch((error) => {
-            console.error('Error fetching services:', error);
-        });
-};
-
-let createService = () => {
-    axios.post('/api/services', form)
-      .then((response) => {
-            services.value.unshift(response.data);
-            form.value.name = '';
-            $('#createProject').modal('hide');
-        });
-};
+let users = ref([]);
 
 
+let getUser = () => {
+    axios.get('/api/users')
+    .then((response) => {
+        users.value = response.data;  
+    })
+    .catch((error) => {
+        console.error('Error fetching services:', error);
+    })
+}
 
 onMounted(() => {
-    getService();
+    getUser();
 });
 </script>
 
@@ -46,12 +34,12 @@ onMounted(() => {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Services Page</h1>
+                        <h1 class="m-0">Users Page</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Services Page</li>
+                            <li class="breadcrumb-item active">Users Page</li>
                         </ol>
                     </div>
                 </div>
@@ -61,7 +49,7 @@ onMounted(() => {
         <div class="content">
             <div class="container-fluid">
                 <div class=" mb-4">
-                    <button type="button" data-toggle="modal" data-target="#createProject" d class="btn btn-primary bg-blue" >Create New User</button>
+                    <button type="button" data-toggle="modal" data-target="#userProject" d class="btn btn-primary bg-blue" >Create New User</button>
                 </div>
 
                 <div class="card">
@@ -74,20 +62,26 @@ onMounted(() => {
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Services Name</th>
+                                                <th>User Name</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <!-- Your table rows here -->
-                                            <tr v-for="service in services" :key="service.id">
-                                                <td>{{ service.id }}</td>
-                                                <td>{{ service.name }}</td>
+                                            <tr v-for="user in users" :key="user.id">
+                                                <td>{{ user.id }}</td>
+                                                <td>{{ user.name }}</td>
+                                                <td>{{ user.email }}</td>
+                                                <td>{{ user.password }}</td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Services Name</th>
+                                                <th>User Name</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -102,7 +96,7 @@ onMounted(() => {
 
     <AdminFooter />
 
-    <div class="modal fade" id="createProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="userProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -113,7 +107,7 @@ onMounted(() => {
                 </div>
 
                 <!-- Form -->
-                <form >
+                <!-- <form >
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Services Name:</label>
@@ -124,7 +118,7 @@ onMounted(() => {
                         <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
                         <button @click="createService" type="submit" class="btn btn-primary bg-primary">Save</button>
                     </div>
-                </form>
+                </form> -->
             </div>
         </div>
     </div>

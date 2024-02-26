@@ -19,7 +19,7 @@ class ProjectFactory extends Factory
     {
         return [
             //
-            'name' =>$this->faker->word(),
+            'name' =>$this->faker->name(),
             'image' => 'public/storage/project/software.startup/tripidkard.png', 
             'description' => $this->faker->paragraph(),
             'service_id' => 1,

@@ -19,14 +19,13 @@ class ServiceSeeder extends Seeder
         $csvFilePath = base_path('storage/data/services.csv');
         $file = fopen($csvFilePath, 'r');
         
-
-        // Basahin ang unang linya ng CSV (header) ngunit huwag itong isama sa dummy data.
+        // read header one line but not include
         $headers = fgetcsv($file);
 
-        while(($data = fgetcsv($file)) !== false){
+        while(($data = fgetcsv($file)) !== false):
             Service::create([
                 'name' => $data[0],
             ]);
-        }
+        endwhile;  
     }
 }

@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers\admin;
 
-
-use App\Models\Service;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class ServiceController extends Controller
+class UserController extends Controller
 {
-    //
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
 
-    public function index() {
-
-        $services = Service::latest()->get();
-
-        return $services;  
+      $users = User::latest()->get();
+        return $users;
     }
 
-      /**
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -29,17 +30,12 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-
-    // public function store(){
-    public function store(Request $request){
-
-
-        return Service::create([
-            'name' => request('name'),
-        ]);
+    public function store(Request $request)
+    {
+        //
     }
 
-   /**
+    /**
      * Display the specified resource.
      */
     public function show(string $id)
@@ -71,4 +67,3 @@ class ServiceController extends Controller
         //
     }
 }
-

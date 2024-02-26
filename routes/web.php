@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\ApplicationController;
 
@@ -30,5 +32,11 @@ Route::get('/api/services', [ServiceController::class, 'index']);
 
 Route::post('/api/services', [ServiceController::class, 'store']);
 
+
+Route::get('/api/projects', [ProjectController::class, 'index']);
+Route::post('/api/projects', [ProjectController::class, 'store']);
+
+
+Route::get('/api/users', [UserController::class, 'index']);
 
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)');

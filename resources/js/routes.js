@@ -25,6 +25,7 @@ import ProjectTripidkard from './projects/tripidkard.vue';
 import AdminDashboard from './pages/admin/dashboard.vue';
 import AdminProjects from './pages/admin/projects.vue';
 import AdminServices from './pages/admin/services.vue';
+import AdminUsers from './pages/admin/user.vue';
 export default [
   
     {
@@ -198,6 +199,15 @@ export default [
         component: AdminServices,
         meta: {
             title: 'Admin Services'
+        }
+    },
+
+    {
+        path: '/admin/users',
+        name: 'admin.users',
+        component: AdminUsers,
+        meta: {
+            title: 'Admin Users'
         }
     },
 

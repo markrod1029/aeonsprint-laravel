@@ -1,14 +1,19 @@
 
 <script setup>
 import axios from 'axios';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, reactive } from 'vue';
 
-let services = ref([]);
+let projects = ref([]);
+let form = reactive({
+    name: '',
+    description: ''
+});
 
-let getService = () => {
-    axios.get('/api/project')
+
+let getProject = () => {
+    axios.get('/api/projects')
         .then((response) => {
-            services.value = response.data;
+            projects.value = response.data;
 
         })
         .catch((error) => {
@@ -16,8 +21,20 @@ let getService = () => {
         });
 };
 
+let createProject = () => {
+    axios.post('/api/projects', form)
+    .then((response) => {
+        projects.value.unshift(response.data);
+        form.value.name = '',
+        form.value.description = ''
+        $('#exampleModal').modal('hide');
+    });
+}
+
+
+
 onMounted(() => {
-    getService();
+    getProject();
 });
 </script>
 
@@ -74,19 +91,22 @@ onMounted(() => {
                                     <tr>
                                         <th>ID</th>
                                         <th>Services Name</th>
+                                        <th>Description</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <!-- Your table rows here -->
-                                    <tr v-for ="service in services" :key="service.id">
-                                        <td>{{ service.id  }}</td>
-                                        <td>{{ service.name  }}</td>
+                                    <tr v-for="project in projects" :key="project.id">
+                                        <td>{{ project.id  }}</td>
+                                        <td>{{ project.name  }}</td>
+                                        <td>{{ project.description  }}</td>
                                     </tr>                                    
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>ID</th>
                                         <th>Services Name</th>
+                                        <th>Description</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -123,16 +143,20 @@ onMounted(() => {
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Services Name:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">Projects Name:</label>
+            <input type="text"  name="name"  v-model="form.name" class="form-control" id="name">
           </div>
-       
+
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Description:</label>
+            <textarea  name="description" type="text" v-model="form.description" class="form-control" id="description" > </textarea>
+          </div>
        
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary bg-primary">Send message</button>
+        <button type="submit"  @click="createProject"   class="btn btn-primary bg-primary">Submit</button>
       </div>
     </div>
   </div>

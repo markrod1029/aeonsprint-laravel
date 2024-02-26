@@ -52,9 +52,9 @@
 
 
             <li class="nav-item">
-                <router-link to="/admin/settings" active-class="active" class="nav-link">
+                <router-link to="/admin/users" active-class="active" class="nav-link">
                     <i class="nav-icon fas fa-cog"></i>
-                        <p class="text-white" >Setting </p>
+                        <p class="text-white" >Users </p>
                 </router-link>
             </li>
 
