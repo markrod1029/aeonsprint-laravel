@@ -144,12 +144,12 @@ onMounted(() => {
         <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Projects Name:</label>
-            <input type="text"  name="name"  v-model="form.name" class="form-control" id="name">
+            <input type="text"  name="name"  v-model="form.name" class="form-control" id="name" required>
           </div>
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Description:</label>
-            <textarea  name="description" type="text" v-model="form.description" class="form-control" id="description" > </textarea>
+            <textarea  name="description" type="text" v-model="form.description" class="form-control" id="description" required> </textarea>
           </div>
        
         </form>

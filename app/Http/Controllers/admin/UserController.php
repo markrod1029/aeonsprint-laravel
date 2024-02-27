@@ -25,6 +25,8 @@ class UserController extends Controller
     public function create()
     {
         //
+
+    
     }
 
     /**
@@ -33,6 +35,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+
+        return User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => bcrypt(request('password')),
+        ]);
     }
 
     /**
@@ -53,10 +61,20 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * Request $request, string $id,
      */
-    public function update(Request $request, string $id)
+    public function update(User $user)
     {
         //
+
+        $user->Update([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => request('password') ? bcrypt(request('password')) : $user->password,
+        ]);
+        
+        return $user;
+
     }
 
     /**

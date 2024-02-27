@@ -2,11 +2,14 @@
 <script setup>
 import axios from 'axios';
 import { onMounted, ref, reactive } from 'vue';
+import { Form, Field} from 'vee-validate';
+import * as yup from 'yup';
 
 let services = ref([]);
 let form = reactive({
     name: '',
 });
+let serviceEditing = ref(false);
 
 let getService = () => {
     axios.get('/api/services')
@@ -18,12 +21,25 @@ let getService = () => {
         });
 };
 
+let schema = yup.object ({
+    name: yup.string().required(),
+});
+
+
+let editService = () => {
+    $('#projectFormModal').modal('show');
+    serviceEditing.value = true;
+
+}
+
 let createService = () => {
     axios.post('/api/services', form)
       .then((response) => {
             services.value.unshift(response.data);
-            form.value.name = '';
-            $('#createProject').modal('hide');
+            form.value.name = '',
+            $('#projectFormModal').modal('hide');
+        serviceEditing.value = false;
+
         });
 };
 
@@ -61,7 +77,7 @@ onMounted(() => {
         <div class="content">
             <div class="container-fluid">
                 <div class=" mb-4">
-                    <button type="button" data-toggle="modal" data-target="#createProject" d class="btn btn-primary bg-blue" >Create New User</button>
+                    <button type="button" data-toggle="modal" data-target="#projectFormModal" d class="btn btn-primary bg-blue" >Create New User</button>
                 </div>
 
                 <div class="card">
@@ -75,6 +91,7 @@ onMounted(() => {
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Services Name</th>
+                                                <th>Control</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -82,12 +99,16 @@ onMounted(() => {
                                             <tr v-for="service in services" :key="service.id">
                                                 <td>{{ service.id }}</td>
                                                 <td>{{ service.name }}</td>
+                                                <td>
+                                                    <a href="#" @click.prevent="editService(service)" class="btn btn-primary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i> </a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Services Name</th>
+                                                <th>Control</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -102,29 +123,35 @@ onMounted(() => {
 
     <AdminFooter />
 
-    <div class="modal fade" id="createProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="projectFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Service</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">
+
+                        <span v-if="serviceEditing"> Update New Service</span>
+                        <span v-else> Add New Service</span>
+
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
                 <!-- Form -->
-                <form >
+                <Form :validation-schema="schema" v-slot="errors">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Services Name:</label>
-                            <input type="text" v-model="form.name" name="name" class="form-control" id="name">
+                            <Field type="text" v-model="form.name" name="name" class="form-control" id="name" required />
+                            <span> {{ errors.name }}</span>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
                         <button @click="createService" type="submit" class="btn btn-primary bg-primary">Save</button>
                     </div>
-                </form>
+                </Form>
             </div>
         </div>
     </div>
