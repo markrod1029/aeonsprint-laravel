@@ -2,12 +2,22 @@
 <script setup>
 import axios from 'axios';
 import { onMounted, ref, reactive } from 'vue';
+import { Form } from 'vee-validate';
+import * as yup from 'yup';
+
 
 let projects = ref([]);
 let form = reactive({
     name: '',
     description: ''
 });
+
+
+let schema = yup.object ({
+    name: yup.string().required(),
+    description: yup.string().required(),
+
+})
 
 
 let getProject = () => {
@@ -27,8 +37,13 @@ let createProject = () => {
         projects.value.unshift(response.data);
         form.value.name = '',
         form.value.description = ''
-        $('#exampleModal').modal('hide');
+        $('#projectFormModal').modal('hide');
     });
+}
+
+let editProject = () => {
+    $('#projectFormModal').modal('show');
+
 }
 
 
@@ -72,7 +87,7 @@ onMounted(() => {
 
             
         <div class=" mb-4">
-                <button type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="btn btn-primary bg-blue" >Create New User</button>
+                <button type="button" data-toggle="modal" data-target="#projectFormModal" data-whatever="@mdo" class="btn btn-primary bg-blue" >Create New User</button>
             </div>
 
 
@@ -92,6 +107,7 @@ onMounted(() => {
                                         <th>ID</th>
                                         <th>Services Name</th>
                                         <th>Description</th>
+                                        <th>Control</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -100,6 +116,10 @@ onMounted(() => {
                                         <td>{{ project.id  }}</td>
                                         <td>{{ project.name  }}</td>
                                         <td>{{ project.description  }}</td>
+                                        <td>
+                                            <a href="#" @click.prevent="editProject(project)" class="btn btn-primary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i> </a>
+
+                                        </td>
                                     </tr>                                    
                                 </tbody>
                                 <tfoot>
@@ -107,6 +127,7 @@ onMounted(() => {
                                         <th>ID</th>
                                         <th>Services Name</th>
                                         <th>Description</th>
+                                        <th>Control</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -131,32 +152,34 @@ onMounted(() => {
 
    
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="projectFormModal" tabindex="-1" role="dialog" aria-labelledby="projectFormModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Service</h5>
+        <h5 class="modal-title" id="projectFormModalLabel">Add New Service</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <Form @submit="createProject" :validation-schema="schema" v-slot="{ errors }" >
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Projects Name:</label>
-            <input type="text"  name="name"  v-model="form.name" class="form-control" id="name" required>
+            <input type="text"  name="name" :class="{'is-invalid' : errors }"   v-model="form.name" class="form-control" id="name" required />
+            <span class="invalid-feedback"  >{{ errors.name }}</span>
           </div>
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Description:</label>
-            <textarea  name="description" type="text" v-model="form.description" class="form-control" id="description" required> </textarea>
+            <Textarea  name="description" type="text" v-model="form.description" :class="{'is-invalid' : errors }" class="form-control" id="description" required> </textarea>
+            <span class="invalid-feedback">{{ errors.description }}</span>
           </div>
        
-        </form>
+        </Form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
-        <button type="submit"  @click="createProject"   class="btn btn-primary bg-primary">Submit</button>
+        <button type="submit" class="btn btn-primary bg-primary">Submit</button>
       </div>
     </div>
   </div>
