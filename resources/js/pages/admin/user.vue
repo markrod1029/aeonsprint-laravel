@@ -2,9 +2,12 @@
 <script setup>
 import axios from 'axios';
 import { onMounted, ref, reactive } from 'vue';
-import { Form, Field } from 'vee-validate';
+import { Form, Field, useSetFieldError } from 'vee-validate';
 import * as yup from 'yup';
+import { useToastr } from '../../toastr.js';
 
+
+let toastr = useToastr();
 let users = ref([]);
 let editing = ref(false);
 let formValues = reactive({ id: '', name: '', email: '', password: '' }); // Initialize with default values
@@ -46,13 +49,23 @@ const editUserSchema = yup.object({
     }),
 });
 
-let createuser = (values, { resetForm }) => {
+let createuser = (values, { resetForm, setErrors }) => {
     axios.post('/api/users', values)
         .then((response) => {
             users.value.unshift(response.data);
             $('#userFormModal').modal('hide');
+            toastr.success('Added User Successfuly');
             resetForm();
-        });
+        })
+        .catch((error) => {
+
+            if(error.response.data.errors) {
+                 //    setFieldError('email', error.response.data.errors.email[0])
+                setErrors(error.response.data.errors); 
+            }
+      
+
+        })
 };
 
 let addUser = () => {
@@ -72,31 +85,41 @@ let editUser = (user) => {
     });
 };
 
-let updateUser = (values) => {
+let updateUser = (values, { resetForm, setErrors }) => {
     axios.put('/api/users/' + formValues.id, values)
         .then((response) => {
             const index = users.value.findIndex(user => user.id === response.data.id);
             users.value[index] = response.data;
             $('#userFormModal').modal('hide');
+            toastr.success('Update User Successfuly');
+            resetForm();
         })
         .catch((error) => {
-            console.log(error);
-        })
-        .finally(() => {
-            form.value.resetForm();
-        });
+
+            if(error.response.data.errors) {
+                //    setFieldError('email', error.response.data.errors.email[0])
+                setErrors(error.response.data.errors); 
+            }
+
+            })
+        //     .finally(() => {
+        //     form.value.resetForm();
+        // });
 };
-let handleSubmit = (values) => {
+let handleSubmit = (values, actions) => {
+    console.log(actions);
     if (editing.value) {
-        updateUser(values);
+        updateUser(values, actions);
     } else {
-        createuser(values, { resetForm: form.value.resetForm });
+        createuser(values, actions);
+        // createuser(values, { resetForm: form.value.resetForm });
     }
 };
 
 
 onMounted(() => {
     getUser();
+
 });
 </script>
 
@@ -186,6 +209,7 @@ onMounted(() => {
                 </div>
                 <!-- Form -->
                 <Form ref="form" @submit="handleSubmit" :validation-schema="editing ? editUserSchema : createUserSchema" v-slot="{ errors }" :initial-values="formValues">
+                   @csrf 
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label"> Name:</label>

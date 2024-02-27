@@ -9,6 +9,7 @@ let services = ref([]);
 let form = reactive({
     name: '',
 });
+
 let serviceEditing = ref(false);
 
 let getService = () => {
@@ -23,6 +24,7 @@ let getService = () => {
 
 let schema = yup.object ({
     name: yup.string().required(),
+
 });
 
 
@@ -35,11 +37,11 @@ let editService = () => {
 let createService = () => {
     axios.post('/api/services', form)
       .then((response) => {
+            serviceEditing.value = false;
             services.value.unshift(response.data);
             form.value.name = '',
             $('#projectFormModal').modal('hide');
-        serviceEditing.value = false;
-
+ q
         });
 };
 
@@ -139,17 +141,17 @@ onMounted(() => {
                 </div>
 
                 <!-- Form -->
-                <Form :validation-schema="schema" v-slot="errors">
+                <Form  @submit="createService" :validation-schema="schema" v-slot="{errors}">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Services Name:</label>
-                            <Field type="text" v-model="form.name" name="name" class="form-control" id="name" required />
-                            <span> {{ errors.name }}</span>
+                            <Field type="text" v-model="form.name" name="name" :class="{'is-invalid': errors.name}" class="form-control" id="name" required />
+                            <span class="invalid-feedback"> {{ errors.name }}</span>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
-                        <button @click="createService" type="submit" class="btn btn-primary bg-primary">Save</button>
+                        <button  type="submit" class="btn btn-primary bg-primary">Save</button>
                     </div>
                 </Form>
             </div>

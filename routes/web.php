@@ -20,6 +20,11 @@ use App\Http\Controllers\ApplicationController;
 
 
 
+// Route::get('csrf', function () {
+//     return csrf_token();
+// });
+
+
 Route::get('/', function(){
     return view('dashboard');
 });
