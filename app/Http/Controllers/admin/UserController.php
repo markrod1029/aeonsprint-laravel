@@ -76,7 +76,7 @@ class UserController extends Controller
         request()->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email,' .$user->id,
-            'password' => 'required|min:8'
+            'password' => 'sometimes|min:8'
 
         ]);
 
@@ -92,9 +92,14 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * string $id,
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
         //
+
+        $user->delete();
+
+        return response()->noContent();
     }
 }

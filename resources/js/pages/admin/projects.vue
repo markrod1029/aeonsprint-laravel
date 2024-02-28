@@ -161,6 +161,8 @@ onMounted(() => {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
+      
       <div class="modal-body">
         <Form @submit="createProject" :validation-schema="schema" v-slot="{ errors }" >
           <div class="form-group">

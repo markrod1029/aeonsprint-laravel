@@ -4,13 +4,14 @@ import axios from 'axios';
 import { onMounted, ref, reactive } from 'vue';
 import { Form, Field} from 'vee-validate';
 import * as yup from 'yup';
+import { useToastr } from '../../toastr.js'
 
+
+let toastr = useToastr();
 let services = ref([]);
-let form = reactive({
-    name: '',
-});
-
 let serviceEditing = ref(false);
+let formValues = reactive({ id: '', name: '' });
+let form = ref(null)
 
 let getService = () => {
     axios.get('/api/services')
@@ -28,27 +29,43 @@ let schema = yup.object ({
 });
 
 
-let editService = () => {
-    $('#projectFormModal').modal('show');
+let addService = () => {
+    serviceEditing.value = false;
+    $('#serviceFormModal').modal('show');
+   
+}
+let editService = (service) => {
+    $('#serviceFormModal').modal('show');
     serviceEditing.value = true;
-
+    formValues.id = service.id;
+    formValues.name = service.name;
 }
 
-let createService = () => {
-    axios.post('/api/services', form)
+
+let createService = (values, { resetForm, actions } ) => {
+    axios.post('/api/services', values)
       .then((response) => {
-            serviceEditing.value = false;
             services.value.unshift(response.data);
-            form.value.name = '',
-            $('#projectFormModal').modal('hide');
- q
+            resetForm();
+            $('#serviceFormModal').modal('hide');
+            toastr.success('Added Service Successfuly');
+
         });
 };
 
 
+let handleSubmit = (values, actions) => {
+    if(serviceEditing.value){
+        updateService(values, actions); 
+
+    } else {
+        createService(values, actions); 
+    }
+}
 
 onMounted(() => {
     getService();
+
 });
 </script>
 
@@ -79,7 +96,7 @@ onMounted(() => {
         <div class="content">
             <div class="container-fluid">
                 <div class=" mb-4">
-                    <button type="button" data-toggle="modal" data-target="#projectFormModal" d class="btn btn-primary bg-blue" >Create New User</button>
+                    <button type="button" @click="addService" class="btn btn-primary bg-blue" >Create New User</button>
                 </div>
 
                 <div class="card">
@@ -125,7 +142,7 @@ onMounted(() => {
 
     <AdminFooter />
 
-    <div class="modal fade" id="projectFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="serviceFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -141,11 +158,11 @@ onMounted(() => {
                 </div>
 
                 <!-- Form -->
-                <Form  @submit="createService" :validation-schema="schema" v-slot="{errors}">
+                <Form  @submit="handleSubmit" :validation-schema="schema" v-slot="{errors}" :initial-values="formValues">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Services Name:</label>
-                            <Field type="text" v-model="form.name" name="name" :class="{'is-invalid': errors.name}" class="form-control" id="name" required />
+                            <Field type="text" v-model="formValues.name"  name="name" :class="{'is-invalid': errors.name}" class="form-control" id="name" required />
                             <span class="invalid-feedback"> {{ errors.name }}</span>
                         </div>
                     </div>
