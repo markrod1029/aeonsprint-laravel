@@ -12,6 +12,7 @@ let services = ref([]);
 let serviceEditing = ref(false);
 let formValues = reactive({ id: '', name: '' });
 let form = ref(null)
+let serviceIdDelete = ref(null);
 
 let getService = () => {
     axios.get('/api/services')
@@ -34,15 +35,10 @@ let addService = () => {
     $('#serviceFormModal').modal('show');
    
 }
-let editService = (service) => {
-    $('#serviceFormModal').modal('show');
-    serviceEditing.value = true;
-    formValues.id = service.id;
-    formValues.name = service.name;
-}
 
 
-let createService = (values, { resetForm, actions } ) => {
+
+let createService = (values, { resetForm } ) => {
     axios.post('/api/services', values)
       .then((response) => {
             services.value.unshift(response.data);
@@ -52,6 +48,44 @@ let createService = (values, { resetForm, actions } ) => {
 
         });
 };
+
+
+
+let editService = (service) => {
+    $('#serviceFormModal').modal('show');
+    serviceEditing.value = true;
+    formValues.id = service.id;
+    formValues.name = service.name;
+}
+
+let updateService = (values, { resetForm }) => {
+    axios.put('/api/services/' + formValues.id, values)
+    .then((response) => {
+        const index = services.value.findIndex(service => service.id === response.data.id);
+        services.value[index] = response.data;
+        toastr.success('Update Service Successfuly');
+        $('#serviceFormModal').modal('hide');
+        resetForm();
+    })
+}
+
+
+let comfirmDeleteService = (service) => {
+    serviceIdDelete.value = service.id;
+    $('#serviceDeleteModal').modal('show');
+
+}
+
+
+let deleteService = () => {
+    axios.delete(`/api/services/${serviceIdDelete.value}`)
+    .then(() => {
+        services.value = services.value.filter(service => service.id !== serviceIdDelete.value);
+        $('#serviceDeleteModal').modal('hide');
+        toastr.success('Service Deleted Successfuly');
+
+    })
+}
 
 
 let handleSubmit = (values, actions) => {
@@ -120,6 +154,7 @@ onMounted(() => {
                                                 <td>{{ service.name }}</td>
                                                 <td>
                                                     <a href="#" @click.prevent="editService(service)" class="btn btn-primary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i> </a>
+                                                    <a href="#" @click.prevent="comfirmDeleteService(service)" class="btn btn-danger btn-sm " style="margin-right: 5px;"><i class="fa fa-trash"></i> </a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -171,6 +206,33 @@ onMounted(() => {
                         <button  type="submit" class="btn btn-primary bg-primary">Save</button>
                     </div>
                 </Form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="serviceDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+
+                        <span > Delete Service</span>
+
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!-- Form -->
+                    <div class="modal-body">
+                        <h5>Are You Sure you want to Delete this Service</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
+                        <button  @click.prevent="deleteService" type="submit" class="btn btn-danger bg-danger">Delete</button>
+                    </div>
             </div>
         </div>
     </div>

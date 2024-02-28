@@ -36,6 +36,8 @@ use App\Http\Controllers\ApplicationController;
 Route::get('/api/services', [ServiceController::class, 'index']);
 
 Route::post('/api/services', [ServiceController::class, 'store']);
+Route::put('/api/services/{service}', [ServiceController::class, 'update']);
+Route::delete('/api/services/{service}', [ServiceController::class, 'destroy']);
 
 
 Route::get('/api/projects', [ProjectController::class, 'index']);

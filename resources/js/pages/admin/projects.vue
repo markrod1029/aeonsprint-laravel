@@ -2,20 +2,20 @@
 <script setup>
 import axios from 'axios';
 import { onMounted, ref, reactive } from 'vue';
-import { Form } from 'vee-validate';
+import { Form,  Field} from 'vee-validate';
 import * as yup from 'yup';
 
 
 let projects = ref([]);
-let form = reactive({
+let formValues = reactive({
+    id: '',
     name: '',
     description: ''
 });
 
 
 let schema = yup.object ({
-    name: yup.string().required(),
-    description: yup.string().required(),
+    name: yup.string().required()
 
 })
 
@@ -31,12 +31,10 @@ let getProject = () => {
         });
 };
 
-let createProject = () => {
-    axios.post('/api/projects', form)
+let createProject = (values) => {
+    axios.post('/api/projects', values)
     .then((response) => {
         projects.value.unshift(response.data);
-        form.value.name = '',
-        form.value.description = ''
         $('#projectFormModal').modal('hide');
     });
 }
@@ -162,27 +160,32 @@ onMounted(() => {
         </button>
       </div>
 
-      
+      <Form @submit="createProject"  :validation-schema="schema" v-slot="{ errors }" :initial-values="formValues" >
       <div class="modal-body">
-        <Form @submit="createProject" :validation-schema="schema" v-slot="{ errors }" >
+        <!--  -->
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Projects Name:</label>
-            <input type="text"  name="name" :class="{'is-invalid' : errors }"   v-model="form.name" class="form-control" id="name" required />
-            <span class="invalid-feedback"  >{{ errors.name }}</span>
+            <Field type="text"  name="name"   v-model="formValues.name" class="form-control" :class="{'is-invalid' : errors.name }" id="name" required />
+            <span class="invalid-feedback"  >{{ errors.name }}</span> 
+            <!-- 
+            
+            -->
           </div>
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Description:</label>
-            <Textarea  name="description" type="text" v-model="form.description" :class="{'is-invalid' : errors }" class="form-control" id="description" required> </textarea>
-            <span class="invalid-feedback">{{ errors.description }}</span>
+            <textarea  name="description" type="text" v-model="formValues.description"  class="form-control" id="description" required> </textarea>
+          
+           
           </div>
        
-        </Form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary bg-primary">Submit</button>
       </div>
+    </Form>
+
     </div>
   </div>
 </div>
