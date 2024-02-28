@@ -5,6 +5,7 @@ import { onMounted, ref, reactive } from 'vue';
 import { Form, Field, useSetFieldError } from 'vee-validate';
 import * as yup from 'yup';
 import { useToastr } from '../../toastr.js';
+import formatDate from '../../helper.js'
 
 
 let toastr = useToastr();
@@ -80,7 +81,6 @@ let addUser = () => {
 
 let editUser = (user) => {
     editing.value = true;
-    form.value.resetForm();
     $('#userFormModal').modal('show');
     formValues.id = user.id;
     formValues.name = user.name;
@@ -206,7 +206,8 @@ onMounted(() => {
                                                 <td>{{ user.id }}</td>
                                                 <td>{{ user.name }}</td>
                                                 <td>{{ user.email }}</td>
-                                                <td>{{  }}</td>
+                                                <td>{{ formatDate(user.created_at) }}</td>
+
                                                 <td>{{  }}</td>
                                                 <td>
                                                     <a href="#" @click.prevent="editUser(user)" class="btn btn-primary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i> </a>

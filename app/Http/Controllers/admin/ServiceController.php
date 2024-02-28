@@ -33,7 +33,6 @@ class ServiceController extends Controller
     // public function store(){
     public function store(Request $request){
 
-
         return Service::create([
             'name' => request('name'),
         ]);
@@ -49,26 +48,37 @@ class ServiceController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * 
      */
     public function edit(string $id)
     {
         //
+     
     }
 
     /**
      * Update the specified resource in storage.
+     * Request $request, string $id
      */
-    public function update(Request $request, string $id)
+    public function update(Service $service)
     {
         //
+        $service->update([
+            'name' => request('name'),
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
+     * string $id
      */
-    public function destroy(string $id)
+    public function destroy(Service $service)
     {
         //
+        $service->delete();
+
+        return response()->noContent();
+
     }
 }
 

@@ -11,11 +11,24 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(User $user)
     {
         //
 
       $users = User::latest()->get();
+
+    //   $users = User::latest()->get()->map(function ($user) {
+        
+    //     // dd($user->created_at->ToFormattedDate());
+    //     return [
+    //         'id' => $user->id,
+    //         'name' => $user->name,
+    //         'email' => $user->email,
+    //         // 'created_at' => $user->created_at->format(config('app.date_format')),
+    //         'created_at' => $user->created_at->ToFormattedDate(),
+    //     ];
+    //   });
+
         return $users;
     }
 
