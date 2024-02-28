@@ -12,6 +12,8 @@ let users = ref([]);
 let editing = ref(false);
 let formValues = reactive({ id: '', name: '', email: '', password: '' }); // Initialize with default values
 let form = ref(null);
+let userIdDelete = ref(null);
+
 
 let getUser = () => {
     axios.get('/api/users')
@@ -73,16 +75,24 @@ let addUser = () => {
     $('#userFormModal').modal('show');
 };
 
+
+
+
 let editUser = (user) => {
     editing.value = true;
     form.value.resetForm();
     $('#userFormModal').modal('show');
-    formValues = reactive({ // Set formValues with user data
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        password: '' // Clear password field
-    });
+    formValues.id = user.id;
+    formValues.name = user.name;
+    formValues.email = user.email;
+    formValues.password = ''; // Clear password field
+
+    // formValues = reactive({ // Set formValues with user data
+    //     id: user.id,
+    //     name: user.name,
+    //     email: user.email,
+    //     password: '' // Clear password field
+    // });
 };
 
 let updateUser = (values, { resetForm, setErrors }) => {
@@ -106,8 +116,12 @@ let updateUser = (values, { resetForm, setErrors }) => {
         //     form.value.resetForm();
         // });
 };
+
+
+
+
+
 let handleSubmit = (values, actions) => {
-    console.log(actions);
     if (editing.value) {
         updateUser(values, actions);
     } else {
@@ -115,6 +129,27 @@ let handleSubmit = (values, actions) => {
         // createuser(values, { resetForm: form.value.resetForm });
     }
 };
+
+
+
+let confirmUserDeletion = (user) => {
+
+
+    userIdDelete.value = user.id;
+
+    $('#deleteUserFormModal').modal('show');
+}
+
+let deleteUser = () => {
+    axios.delete(`/api/users/${userIdDelete.value}`)
+    .then(() => {
+        $('#deleteUserFormModal').modal('hide');
+        users.value = users.value.filter(user => user.id !== userIdDelete.value)
+        toastr.success('User Deleted Successfuly');
+
+    })
+
+}
 
 
 onMounted(() => {
@@ -160,7 +195,8 @@ onMounted(() => {
                                                 <th>ID</th>
                                                 <th>User Name</th>
                                                 <th>Email</th>
-                                                <th>Password</th>
+                                                 <th>Register Date</th>
+                                                <th>role</th>
                                                 <th>Control</th>
                                             </tr>
                                         </thead>
@@ -170,9 +206,11 @@ onMounted(() => {
                                                 <td>{{ user.id }}</td>
                                                 <td>{{ user.name }}</td>
                                                 <td>{{ user.email }}</td>
-                                                <td>{{ user.password }}</td>
+                                                <td>{{  }}</td>
+                                                <td>{{  }}</td>
                                                 <td>
                                                     <a href="#" @click.prevent="editUser(user)" class="btn btn-primary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i> </a>
+                                                    <a href="#" @click.prevent="confirmUserDeletion(user)" class="btn btn-danger btn-sm " style="margin-right: 5px;"><i class="fa fa-trash"></i> </a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -181,7 +219,8 @@ onMounted(() => {
                                                 <th>ID</th>
                                                 <th>User Name</th>
                                                 <th>Email</th>
-                                                <th>Password</th>
+                                                <th>Register Date</th>
+                                                <th>role</th>
                                                 <th>Control</th>
                                             </tr>
                                         </tfoot>
@@ -195,6 +234,8 @@ onMounted(() => {
         </div>
     </div>
     <AdminFooter />
+
+
     <div class="modal fade" id="userFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -209,7 +250,6 @@ onMounted(() => {
                 </div>
                 <!-- Form -->
                 <Form ref="form" @submit="handleSubmit" :validation-schema="editing ? editUserSchema : createUserSchema" v-slot="{ errors }" :initial-values="formValues">
-                   @csrf 
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label"> Name:</label>
@@ -232,6 +272,34 @@ onMounted(() => {
                         <button type="submit" class="btn btn-primary bg-primary">Save</button>
                     </div>
                 </Form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="deleteUserFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <span>Delete User Account</span>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Form -->
+
+                <div class="modal-body">
+                    <h5>Are You Sure you want to Delete this User</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
+                        <button @click.prevent="deleteUser" type="submit" class="btn btn-danger bg-danger">delete</button>
+                </div>
+
+                
             </div>
         </div>
     </div>
