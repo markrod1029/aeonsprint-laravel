@@ -45,10 +45,49 @@
                                 <div class="absolute inset-0"></div>
                             </div> -->
                             </div>
-                            <p><!--[-->Low code/No-code Development is the software development approach used for fast development, which requires little to no coding to build web applications and processes.<!--]--></p>
-                            <p><!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--]--></p>
-                            <p><!--[-->What makes this development better is that it increases our clients' agility to respond to the market changes faster. Aside from that, it can maximize their productivity and improve the customer experience on their end and it is also easier to maintain. This also delivers rapid innovation to their business in no time.<!--]--></p>
+                            <p>
+                              Digital marketing encompasses a broad range of strategies and tactics aimed at promoting products, services, or brands using digital channels. At our agency, we offer comprehensive digital marketing services designed to help businesses thrive in the ever-evolving online landscape. Our approach combines creativity, data-driven insights, and cutting-edge technologies to deliver measurable results and drive business growth.
+                            </p>
+
+                            
                         </div>
+
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                            <!-- Details in Wordpress -->
+                            <div class=" font-bold text-center text-2xl">
+                                <span>Social Media Marketing</span>
+                            </div>
+                            <p>
+                              We develop and execute social media strategies tailored to your brand objectives, audience demographics, and industry trends. From content creation and community management to paid advertising and influencer partnerships, we leverage social media channels to build brand awareness, engage with your audience, and drive meaningful interactions.
+                            </p>
+                        </div>
+
+                        
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                            <!-- Details in Wordpress -->
+                            <div class=" font-bold text-center text-2xl">
+                                <span>Content Marketing</span>
+                            </div>
+                            <p>
+                              We craft compelling and relevant content that resonates with your target audience and aligns with your brand messaging. Whether it's blog posts, videos, infographics, or whitepapers, our content marketing strategies aim to educate, entertain, and inspire action, ultimately driving traffic, leads, and conversions.
+                            </p>
+                        </div>
+
+
+                        
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                            <!-- Details in Wordpress -->
+                            <div class=" font-bold text-center text-2xl">
+                                <span>Email Marketing</span>
+                            </div>
+                            <p>
+                              We design and implement email campaigns to nurture leads, promote products or services, and strengthen customer relationships. Our email marketing strategies leverage segmentation, personalization, and automation to deliver targeted messages that drive engagement and drive revenue.
+                            </p>
+                        </div>
+
+
+                        
+
 
 
  

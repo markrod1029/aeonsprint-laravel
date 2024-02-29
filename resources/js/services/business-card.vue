@@ -43,9 +43,34 @@
                                 <div class="absolute inset-0"></div>
                             </div> -->
                             </div>
-                            <p><!--[-->Low code/No-code Development is the software development approach used for fast development, which requires little to no coding to build web applications and processes.<!--]--></p>
-                            <p><!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--]--></p>
-                            <p><!--[-->What makes this development better is that it increases our clients' agility to respond to the market changes faster. Aside from that, it can maximize their productivity and improve the customer experience on their end and it is also easier to maintain. This also delivers rapid innovation to their business in no time.<!--]--></p>
+                            <p>
+                              In today's fast-paced digital world, the traditional paper business card is evolving into its
+                               sleek and efficient counterpart: the digital business card. Our digital business card service
+                                offers you a modern and eco-friendly solution to networking and sharing your contact information. 
+                                With a digital business card, you can effortlessly exchange contact details with a simple tap or scan,
+                                 eliminating the hassle of carrying and collecting paper cards.
+                               Our designs are customizable to reflect your brand identity, incorporating your logo, colors, 
+                               and personal information in a visually appealing layout.
+                            </p>
+                            One of the key advantages of a digital business card is its versatility. Unlike traditional paper 
+                            cards, which can easily get lost or damaged, digital business cards can be easily stored and accessed
+                             on smartphones, tablets, or other digital devices. This ensures that your contact information is always
+                              readily available to your contacts, whether they're at a networking event, conference, or meeting. Additionally, 
+                              our digital business cards can be integrated with your 
+                            existing digital platforms, such as email signatures or social media profiles,
+                             to further enhance your online presence and accessibility.
+                            <p>
+
+                              <p>
+                                Furthermore, digital business cards offer valuable insights and analytics that paper cards simply cannot provide. With our service, 
+                                you can track how many times your card has been viewed or shared, allowing you to gauge the effectiveness of your 
+                                networking efforts and follow up with potential leads accordingly. By harnessing the power of digital technology,
+                                 our digital business card service empowers you to make a memorable impression, streamline your networking process,
+                                  and stay ahead in today's digital age.
+                              </p>
+
+
+                            </p>
                         </div>
 
 

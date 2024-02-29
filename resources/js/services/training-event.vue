@@ -32,7 +32,7 @@
                   
                   <div class="pt-2 md:pt-4 mt-4">
                       <h1 class="center flex  flex-col text-grey mb-6 space-y-2 text-3xl  md:mb-4 highlight">
-                          <p>Digital Marketing</p>
+                          <p>Conference and Training Event Management</p>
                       </h1>
                                       
                   </div>
@@ -45,9 +45,18 @@
                               <div class="absolute inset-0"></div>
                           </div> -->
                           </div>
-                          <p><!--[-->Low code/No-code Development is the software development approach used for fast development, which requires little to no coding to build web applications and processes.<!--]--></p>
-                          <p><!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--]--></p>
-                          <p><!--[-->What makes this development better is that it increases our clients' agility to respond to the market changes faster. Aside from that, it can maximize their productivity and improve the customer experience on their end and it is also easier to maintain. This also delivers rapid innovation to their business in no time.<!--]--></p>
+                          <p>
+                            Conference and training management is a complex endeavor requiring meticulous planning, attention to detail, and seamless execution. At our agency, we specialize in simplifying this process for businesses and organizations, ensuring that every aspect of your event is meticulously coordinated and flawlessly executed. From strategic planning and venue selection to program development and attendee management, we handle all aspects of conference and training logistics, allowing you to focus on delivering valuable content and engaging experiences for your attendees.
+                          </p>
+
+                          <p>
+                            Our approach to conference and training management is rooted in collaboration and customization. We work closely with you to understand your unique goals, audience demographics, and budgetary considerations, tailoring our services to meet your specific needs and objectives. Whether you're hosting a large-scale conference, a series of training workshops, or a corporate retreat, our team is committed to delivering personalized solutions that align with your vision and exceed your expectations.
+                          </p>
+
+                          <p>
+                            With our comprehensive conference and training management services, you can rest assured that every detail of your event is expertly managed and executed. From venue logistics and program development to marketing promotion and attendee engagement, we handle every aspect of the planning process with professionalism and precision, ensuring a seamless and successful event that leaves a lasting impression on your attendees. Let us be your trusted partner in bringing your conference or training vision to life, delivering an exceptional experience that drives results for your organization.
+                          </p>
+
                       </div>
 
 

@@ -44,12 +44,80 @@
                                 <div class="absolute inset-0"></div>
                             </div> -->
                             </div>
-                            <p><!--[-->Low code/No-code Development is the software development approach used for fast development, which requires little to no coding to build web applications and processes.<!--]--></p>
-                            <p><!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--]--></p>
-                            <p><!--[-->What makes this development better is that it increases our clients' agility to respond to the market changes faster. Aside from that, it can maximize their productivity and improve the customer experience on their end and it is also easier to maintain. This also delivers rapid innovation to their business in no time.<!--]--></p>
+                            <p><!--[-->
+                              where creativity meets functionality! Our team of skilled designers is dedicated to bringing your visions to life
+                              | through captivating visuals that resonate with your audience. With a perfect blend of artistic flair and strategic 
+                              thinking, we craft designs that not only look stunning but also effectively communicate your message.
+                            </p>
                         </div>
 
 
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                            <!-- Details in Wordpress -->
+                            <div class=" font-bold text-center text-2xl">
+                                <span>Print  Design</span>
+                            </div>
+                            <p>
+                              From business cards and brochures to posters and banners, we offer a wide range of print design
+                              services to meet your marketing needs. Our designs are tailored to align with your brand 
+                              guidelines and objectives, ensuring that every piece effectively communicates your message and captivates your audience.
+                            </p>
+                        </div>
+
+
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                            <!-- Details in Wordpress -->
+                            <div class=" font-bold text-center text-2xl">
+                                <span>Logo Design</span>
+                            </div>
+                            <p>
+                              Your logo is the cornerstone of your brand identity. Our designers specialize in creating unique, 
+                              memorable logos that reflect your brand's personality and values. Whether you're starting from scratch or
+                               looking to refresh your current logo, we're here to help you make a lasting impression.
+                            </p>
+                        </div>
+
+
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                            <!-- Details in Wordpress -->
+                            <div class=" font-bold text-center text-2xl">
+                                <span>Digital Design</span>
+                            </div>
+                            <p>
+                              In today's digital age, a strong online presence is essential for success.
+                               Our digital design services cover everything from website design and social media graphics to email 
+                               templates and digital ads. We combine creativity with user experience principles to deliver 
+                               engaging digital experiences that drive results.
+                            </p>
+                        </div>
+
+
+
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                            <!-- Details in Wordpress -->
+                            <div class=" font-bold text-center text-2xl">
+                                <span>Packaging  Design</span>
+                            </div>
+                            <p>
+                              Packaging plays a crucial role in influencing purchasing decisions and shaping brand perception. 
+                              Our designers are experts at creating eye-catching packaging designs that stand out on the shelf
+                              and leave a lasting impression. Whether you're launching a new product or reimagining your packaging,
+                               we'll help you make an impact.
+                            </p>
+                        </div>
+
+                        
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                            <!-- Details in Wordpress -->
+                            <div class=" font-bold text-center text-2xl">
+                                <span>Illustration</span>
+                            </div>
+                            <p>
+                              Illustrations add a unique and personal touch to your designs, helping you tell your story in a
+                              visually compelling way. Whether you need custom illustrations for a website, book, or marketing
+                              campaign, our talented illustrators can bring your ideas to life with creativity and precision.
+                            </p>
+                        </div>
  
                 </section>
              

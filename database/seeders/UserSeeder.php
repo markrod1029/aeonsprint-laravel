@@ -25,7 +25,8 @@ class UserSeeder extends Seeder
             User::create([
                 'name' => $data[0],
                 'email' => $data[1],
-                'password' => $data[2]
+                'password' => $data[2],
+                'role' => $data[3]
             ]);
         endwhile;  
     }

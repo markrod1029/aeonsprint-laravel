@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -50,10 +51,14 @@ class User extends Authenticatable
         'formatted_created_at',
     ];  
 
+    // Date Format
+
     public function getFormattedCreatedAtAttribute()
     {
         return $this->created_at->format(config('app.date_format'));
     }
+
+    // User Role
 
     public function role(): Attribute
     {
