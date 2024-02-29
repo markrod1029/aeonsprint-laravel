@@ -4,16 +4,20 @@ import axios from 'axios';
 import { onMounted, ref, reactive } from 'vue';
 import { Form, Field, useSetFieldError } from 'vee-validate';
 import * as yup from 'yup';
-import { useToastr } from '../../toastr.js';
-import formatDate from '../../helper.js'
-
+import { useToastr } from '../../../toastr.js';
+  // Import the Footer and MenuBar components
+  import AdminSideBar from '@/components/Organisms/adminSidebar.vue';
+  import AdminMenuBar from '@/components/Organisms/adminMenubar.vue';
+  import AdminFooter from '@/components/Organisms/adminFooter.vue';
+  import UserListItem from './UserListItem.vue';
+  
 
 let toastr = useToastr();
 let users = ref([]);
 let editing = ref(false);
 let formValues = reactive({ id: '', name: '', email: '', password: '' }); // Initialize with default values
 let form = ref(null);
-let userIdDelete = ref(null);
+
 
 
 let getUser = () => {
@@ -120,6 +124,10 @@ let updateUser = (values, { resetForm, setErrors }) => {
 
 
 
+let userDeleted = (userId) => {
+        users.value = users.value.filter(user => user.id !== userId)
+}
+
 
 let handleSubmit = (values, actions) => {
     if (editing.value) {
@@ -132,24 +140,6 @@ let handleSubmit = (values, actions) => {
 
 
 
-let confirmUserDeletion = (user) => {
-
-
-    userIdDelete.value = user.id;
-
-    $('#deleteUserFormModal').modal('show');
-}
-
-let deleteUser = () => {
-    axios.delete(`/api/users/${userIdDelete.value}`)
-    .then(() => {
-        $('#deleteUserFormModal').modal('hide');
-        users.value = users.value.filter(user => user.id !== userIdDelete.value)
-        toastr.success('User Deleted Successfuly');
-
-    })
-
-}
 
 
 onMounted(() => {
@@ -202,18 +192,13 @@ onMounted(() => {
                                         </thead>
                                         <tbody>
                                             <!-- Your table rows here -->
-                                            <tr v-for="user in users" :key="user.id">
-                                                <td>{{ user.id }}</td>
-                                                <td>{{ user.name }}</td>
-                                                <td>{{ user.email }}</td>
-                                                <td>{{ formatDate(user.created_at) }}</td>
-
-                                                <td>{{  user.role}}</td>
-                                                <td>
-                                                    <a href="#" @click.prevent="editUser(user)" class="btn btn-primary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i> </a>
-                                                    <a href="#" @click.prevent="confirmUserDeletion(user)" class="btn btn-danger btn-sm " style="margin-right: 5px;"><i class="fa fa-trash"></i> </a>
-                                                </td>
-                                            </tr>
+                                            <UserListItem v-for="(user, index) in users" 
+                                                 :key="user.id"
+                                                 :user=user
+                                                 :index=index
+                                                 @editUser="editUser"
+                                                 @userDeleted="userDeleted"
+                                                  />
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -279,48 +264,10 @@ onMounted(() => {
 
 
 
-    <div class="modal fade" id="deleteUserFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <span>Delete User Account</span>
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!-- Form -->
-
-                <div class="modal-body">
-                    <h5>Are You Sure you want to Delete this User</h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
-                        <button @click.prevent="deleteUser" type="submit" class="btn btn-danger bg-danger">delete</button>
-                </div>
-
-                
-            </div>
-        </div>
-    </div>
+    
 </template>
 
-<script>
-// Import components
-import AdminSideBar from '@/components/Organisms/adminSidebar.vue';
-import AdminMenuBar from '@/components/Organisms/adminMenubar.vue';
-import AdminFooter from '@/components/Organisms/adminFooter.vue';
 
-export default {
-    components: {
-        // Register components
-        AdminSideBar,
-        AdminMenuBar,
-        AdminFooter
-    }
-};
-</script>
 
 <style>
 .invalid-feedback {

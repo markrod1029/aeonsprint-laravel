@@ -25,7 +25,7 @@ import ProjectTripidkard from './projects/tripidkard.vue';
 import AdminDashboard from './pages/admin/dashboard.vue';
 import AdminProjects from './pages/admin/projects.vue';
 import AdminServices from './pages/admin/services.vue';
-import AdminUsers from './pages/admin/user.vue';
+import AdminUsers from './pages/admin/user/UserList.vue';
 export default [
   
     {
