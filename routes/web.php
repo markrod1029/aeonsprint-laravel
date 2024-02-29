@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\UserController;
-
 use App\Http\Controllers\ApplicationController;
+
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\admin\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
