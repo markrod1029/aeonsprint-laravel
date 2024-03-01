@@ -2,73 +2,52 @@
     <MenuBar/>
 
     <div id="main-wrapper">
-                    <section id="hero" >
-                       <div id="hero" class="relative h-48 " style="height:14rem">
-                        <div class="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-zinc-50" ></div>
-                           <div class="relative inset-0 md:top-[30%] z-30" >
-                                   <div class="flex flex-col-reverse justify-center m-auto md:flex-row md:px-0 md:max-w-6xl md:m-auto" >
-                                       <div class=" mx-auto md:w-4/2 md:mx-0" >
-                                           <h6 class=" mt-5 text-2xl font-bold tracking-wide md:text-4xl md:text-left leading gap-y-2" >
-                                            <span class=" text-center text-transparent bg-clip-text" style="color:#1D85BD;">
-                                                Connect With Us, Let's Start a Conversation
-                                               </span>
-                                           </h6>
-                                          
-                                       </div>
-                                      
-                                   </div>
-                           </div>
-                       
-                           
-                       </div>
-                   </section>
-                   
-                   <div id="service" class="grid grid-cols-1  my-10 md:grid-cols-3 md:max-w-5xl md:mx-auto" style="gap: 2.5rem;  max-width: 74rem;" >
-   
-                            
-                <div class="bg-white  rounded-md " >
-                    <div class="relative my-12 text-center hover:shadow-xl:hover">
-                        <h2 class="text-2xl font-bold leading">
-                            Address
-                        </h2>
-                        <p class="pt-4 text-2lg  text-gray">Perez Blvd, Dagupan, Pangasinan
-                           
-                        </p>
+        <section id="hero-banner">
+            <div id="hero" class="relative h-48" style="height:14rem">
+                <div class="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-zinc-50"></div>
+                <div class="relative inset-0 flex items-center justify-center z-30">
+                    <div class="mx-auto max-w-6xl px-6 text-center  my-5 py-3"> <!-- Baguhin ang text-center class dito -->
+                        <h6 class="mt-5 text-2xl font-bold md:text-4xl leading gap-y-2 text-transparent bg-clip-text hero-text" style="color:#1D85BD;">
+                            Connect With Us, Let's Start a Conversation
+                        </h6>
                     </div>
                 </div>
+            </div>
 
-                
+        </section>
+                   
+        <div id="service" class="grid grid-cols-1 my-10 md:grid-cols-3 md:max-w-5xl md:mx-auto" style="gap: 1.5rem; max-width: 74rem;">
+    <div class="bg-white rounded-md">
+        <div class="relative my-6 text-center md:my-12 hover:shadow-xl:hover">
+            <h2 class="text-lg md:text-2xl font-bold leading">
+                Address
+            </h2>
+            <p class="pt-2 md:pt-4 text-sm md:text-lg text-gray">Perez Blvd, Dagupan, Pangasinan</p>
+        </div>
+    </div>
 
-                <div class=" bg-white  rounded-md " >
-                <div class="relative  my-12 text-center hover:shadow-xl">
-                    
-                    <h2 class="text-2xl font-bold leading">
-                        Email Us
-                    </h2>
-                    <p class="pt-4 text-2lg text-gray" >aeon.redstone@gmail.com
-                    </p>
-                    <p class=" text-2lg text-gray" >info@tripidkard.com
-                    </p>
-                </div>
-                </div>
+    <div class="bg-white rounded-md">
+        <div class="relative my-6 text-center md:my-12 hover:shadow-xl">
+            <h2 class="text-lg md:text-2xl font-bold leading">
+                Email Us
+            </h2>
+            <p class="pt-2 md:pt-4 text-sm md:text-lg text-gray">aeon.redstone@gmail.com</p>
+            <p class="text-sm md:text-lg text-gray">info@tripidkard.com</p>
+        </div>
+    </div>
 
-                <div class=" bg-white  rounded-md">
-                <div class="relative my-12 text-center hover:shadow-xl ">
-                    <h2 class="text-2xl font-bold leading">
-                        Call Us
-                    </h2>
-                    <p class="pt-4 text-2lg" >09569908000
-                       
-                    </p>
-                </div>
-                </div>
+    <div class="bg-white rounded-md">
+        <div class="relative my-6 text-center md:my-12 hover:shadow-xl">
+            <h2 class="text-lg md:text-2xl font-bold leading">
+                Call Us
+            </h2>
+            <p class="pt-2 md:pt-4 text-sm md:text-lg">09569908000</p>
+        </div>
+    </div>
+</div>
 
 
 
-
-
-
-                </div>
                 <section class="contact-us">
                     <div id="contact-us" class="grid grid-cols-1 gap-5 my-10 md:grid-cols-2 md:max-w-5xl md:mx-auto about-us-text" >
    

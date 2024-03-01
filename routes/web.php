@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\ApplicationController;
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\admin\ServiceController;
 
@@ -34,6 +35,8 @@ use App\Http\Controllers\admin\ServiceController;
 // });
 
 Route::get('/api/services', [ServiceController::class, 'index']);
+
+Route::post('/contact', ContactController::class)->name('contact');
 
 Route::post('/api/services', [ServiceController::class, 'store']);
 Route::put('/api/services/{service}', [ServiceController::class, 'update']);

@@ -2,27 +2,22 @@
     <MenuBar/>
 
     <div id="main-wrapper">
-                    <section id="hero" >
-                       <div id="hero" class="relative h-48 " style="height:14rem">
-                        <div class="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-zinc-50" ></div>
-                           <div class="relative inset-0 md:top-[30%] z-30" >
-                                   <div class="flex flex-col-reverse justify-center m-auto md:flex-row md:px-0 md:max-w-6xl md:m-auto" >
-                                       <div class=" mx-auto md:w-4/2 md:mx-0" >
-                                           <h6 class=" mt-5 text-2xl font-bold tracking-wide md:text-4xl md:text-left leading gap-y-2" >
-                                            <span class=" text-center text-transparent bg-clip-text" style="color:#1D85BD;">
-                                                Our Work: A Glimpse into Our Successful Projects
-                                               </span>
-                                           </h6>
-                                          
-                                       </div>
-                                      
-                                   </div>
-                           </div>
-                       
-                           
-                       </div>
-                   </section>
-        
+            
+    <section id="hero-banner">
+            <div id="hero" class="relative h-48" style="height:14rem">
+                <div class="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-zinc-50"></div>
+                <div class="relative inset-0 flex items-center justify-center z-30">
+                    <div class="mx-auto max-w-6xl px-6 text-center  my-5 py-3"> <!-- Baguhin ang text-center class dito -->
+                        <h6 class="mt-5 text-2xl font-bold md:text-4xl leading gap-y-2 text-transparent bg-clip-text hero-text" style="color:#1D85BD;">
+                            Our Work: A Glimpse into Our Successful Projects
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
                 <section class="project">
 
                
@@ -141,7 +136,8 @@
 
                                         <!-- Discover Button sa Kanan -->
                                         <div>
-                                            <router-link to="/projects/tripidkard"  class="flex items-center space-x-1 font-extrabold tracking-wide uppercase hover:text-blue-400 text-blue-400 text-decoration-none"  native="true" >
+                                            <!-- to="/projects/tripidkard" -->
+                                            <router-link to=""  class="flex items-center space-x-1 font-extrabold tracking-wide uppercase hover:text-blue-400 text-blue-400 text-decoration-none"  native="true" >
                                                 <span>Explore</span>
                                             </router-link>
                                         </div>
