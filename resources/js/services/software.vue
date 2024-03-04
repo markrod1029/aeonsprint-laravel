@@ -2,27 +2,22 @@
     <MenuBar/>
 
     <div id="main-wrapper">
-                   <section id="hero" >
-                       <div id="hero" class="relative h-48 " style="height:14rem">
-                        <div class="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-zinc-50" ></div>
-                           <div class="relative inset-0 md:top-[30%] z-30" >
-                                   <div class="flex flex-col-reverse justify-center m-auto md:flex-row md:px-0 md:max-w-6xl md:m-auto" >
-                                       <div class=" mx-auto md:w-4/2 md:mx-0" >
-                                           <h6 class=" mt-5 text-2xl font-bold tracking-wide md:text-4xl md:text-left leading gap-y-2" >
-                                            <span class=" text-center text-transparent bg-clip-text" style="color:#1D85BD;">
-                                                Bridging Connections with Software Solutions
-                                               </span>
-                                           </h6>
-                                          
-                                       </div>
-                                      
-                                   </div>
-                           </div>
-                       
-                           
-                       </div>
-                   </section>
 
+        <section id="hero-banner">
+            <div id="hero" class="relative h-48" style="height:14rem">
+                <div class="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-zinc-50"></div>
+                <div class="relative inset-0 flex items-center justify-center z-30">
+                    <div class="mx-auto max-w-6xl px-6 text-center  my-5 py-3"> <!-- Baguhin ang text-center class dito -->
+                        <h6 class="mt-5 text-2xl font-bold md:text-4xl leading gap-y-2 text-transparent bg-clip-text hero-text" style="color:#1D85BD;">
+                            Bridging Connections with Software Solutions
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+                  
 
                    
                  
@@ -37,7 +32,7 @@
                     </div>
 
 
-                    <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+                    <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 services-description">
                         <div name="submit" class="flex justify-center mb-2 md:ml-6 md:float-right not-prose">
                             <!-- <div class="relative w-[290px] h-[300px] aspect-w-3 aspect-h-3 sm:aspect-w-16 sm:aspect-h-9 bottom-4 left-3">
                                 <img class="object-cover transform scale-150" src="/storage/about-us/3d-target.png">
@@ -109,13 +104,13 @@
 
 
 
-                    <section class="wordpress" style="display: none;">
+                    <section class="wordpress " style="display: none;">
                         <div class="pt-2 md:pt-4 mt-4">
                             <h1 class="center flex flex-col text-grey mb-6 space-y-2 text-3xl md:mb-4 highlight">
                                 <p>Wordpress Development</p>
                             </h1>
                         </div>
-                        <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+                        <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 services-description">
                             <!-- Details in Wordpress -->
                             <p>
                                 In our WordPress service, we specialize in providing efficient solutions to fulfill your software needs. 
@@ -137,7 +132,7 @@
 
 
 
-                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4 services-description">
                             <!-- Details in Wordpress -->
                             <div class=" font-bold text-center text-2xl">
                                 <span>CMS Development</span>
@@ -153,7 +148,7 @@
                         </div>
 
 
-                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4 services-description">
                             <!-- Details in Wordpress -->
                             <div class=" font-bold text-center text-2xl">
                                 <span>WordPress Theme Customization</span>
@@ -174,7 +169,7 @@
                         
 
 
-                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4 services-description">
                             <!-- Details in Wordpress -->
                             <div class=" font-bold text-center text-2xl">
                                 <span>Plugin Development</span>
@@ -189,7 +184,7 @@
                             </p>
                         </div>
 
-                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4 services-description">
                             <!-- Details in Wordpress -->
                             <div class=" font-bold text-center text-2xl">
                                 <span>Blogging Solutions</span>
@@ -205,7 +200,7 @@
                         </div>
 
 
-                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4 services-description">
                             <!-- Details in Wordpress -->
                             <div class=" font-bold text-center text-2xl">
                                 <span>Maintenance and Support</span>
@@ -225,14 +220,14 @@
                     <!-- service Wordpress End -->
 
                     <!-- service Web App Start -->
-                    <section class="tailoredweb" style="display: none;">
+                    <section class="tailoredweb " style="display: none;">
                         <div class="pt-2 md:pt-4 mt-4">
                             <h1 class="center flex flex-col text-grey mb-6 space-y-2 text-3xl md:mb-4 highlight">
                                 <p>Tailored Web Development</p>
                             </h1>
                         </div>
 
-                        <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+                        <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 services-description">
                             <!-- Details of Tailored Web -->
                             <p>
                                 Experience tailored web solutions designed specifically for your business needs. 
@@ -246,12 +241,12 @@
 
                   
                         
-                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4 services-description">
                             <!-- Details in Tailored Web -->
-                            <div class=" font-bold text-center text-2xl">
+                            <div class=" font-bold text-center text-2xl ">
                                 <span>laravel Vue</span>
                             </div>
-                            <p>
+                            <p class="">
                                 Experience the seamless integration of Laravel with Tailwind CSS, offering a straightforward
                                  solution for crafting visually stunning web applications. With Laravel providing the robust
                                   backend framework and Tailwind CSS offering a comprehensive set of utility classes for 
@@ -271,11 +266,11 @@
 
                     <section class="lowcode" style="display: none;">
                         <div class="pt-2 md:pt-4 mt-4">
-                            <h1 class="center flex flex-col text-grey mb-6 space-y-2 text-3xl md:mb-4 highlight">
+                            <h1 class="center flex flex-col text-grey mb-6 space-y-2 text-3xl md:mb-4 highlight services-description">
                                 <p>No-Code/Low-Code Development</p>
                             </h1>
                         </div>
-                        <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+                        <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 services-description">
                             <!-- Detalye ng No-Code/low-code -->
                             <p><!--[-->Low code/No-code Development is the software development approach used for fast development, 
                                 which requires little to no coding to build web applications and processes.<!--]-->
@@ -293,7 +288,7 @@
 
 
 
-                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4">
+                        <div class="border border-gray-300 md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 p-4 services-description">
                             <!-- Details in No-Code/low-code -->
                             <div class=" font-bold text-center text-2xl">
                                 <span>Wix Web</span>
@@ -322,7 +317,7 @@
                                 <p>Startup Development</p>
                             </h1>
                         </div>
-                        <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+                        <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5 services-description">
                             <!-- Detalye ng No-Code/low-code -->
                             <p><!--[-->Low code/No-code Development is the software development approach used for fast development, 
                                 which requires little to no coding to build web applications and processes.<!--]-->

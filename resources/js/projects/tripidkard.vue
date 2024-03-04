@@ -25,48 +25,82 @@
                      </div>
                  </section>
                  
+                 <section class="project-tripidkard max-w-5xl mx-auto">
+    <div class="md:pt-4">
+        <h1 class="center flex flex-col space-y-2 text-2xl md:mb-4">
+            <p>Tripidkard Description</p>
+        </h1>                                      
+    </div>
 
-              <section class="project-tripidkard max-w-5xl mx-auto">
-                  
-                  <div class=" md:pt-4">
-                      <h1 class="center flex flex-col  space-y-2 text-2xl  md:mb-4 ">
-                          <p>Chatbot Marketing</p>
-                      </h1>
-                                      
-                  </div>
+    <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+        <p>
+            Tripidkard, an innovative platform reshaping the dynamics of online commerce. Serving as a vibrant hub for affiliate merchants, Tripidkard connects businesses with influencers and marketers to expand their reach and drive sales. On the customer front, Tripidkard takes loyalty to new heights by rewarding every purchase with valuable points that can be redeemed for exciting perks. The synergy within Tripidkard creates a unique ecosystem where merchants thrive through affiliation, customers enjoy exclusive benefits, and both parties are immersed in a rewarding and engaging experience. Join us on this journey where success meets partnership, and loyalty is celebrated.
+        </p>
+    </div>
 
-                  <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
-                      <div name="submit" class="flex justify-center mb-2 md:ml-6 md:float-right not-prose">
-                          <!-- <div class="relative w-[290px] h-[300px] aspect-w-3 aspect-h-3 sm:aspect-w-16 sm:aspect-h-9 bottom-4 left-3">
-                              <img class="object-cover transform scale-150" src="/storage/serviceIcon/graphic-tablet-svgrepo-com.svg">
-                              <div class="absolute inset-0"></div>
-                          </div> -->
-                          </div>
-                          <p><!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--]--></p>
-                      </div>
+    <div class="md:pt-4">
+        <h1 class="center flex flex-col space-y-2 text-2xl md:mb-4">
+            <p>Challenge</p>
+        </h1>                                      
+    </div>
 
+    <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+        <p>
+            <!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--[]-->
+        </p>
+        <ul class="list-disc ml-6">
+            <li>Determine the needs and objectives of clients.</li>
+            <li>Define the procedure and required information.</li>
+            <li>Assess low-code/no-code platforms.</li>
+            <li>Present the selected platform.</li>
+            <li>Cooperate and support throughout the process.</li>
+        </ul>
+    </div>
 
-                      <div class=" md:pt-4">
-                      <h1 class="center flex flex-col  space-y-2 text-2xl  md:mb-4 ">
-                          <p>Chatbot Marketing</p>
-                      </h1>
-                                      
-                  </div>
+    <div class="md:pt-4">
+        <h1 class="center flex flex-col space-y-2 text-2xl md:mb-4">
+            <p>Solution</p>
+        </h1>                                      
+    </div>
 
-                  <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
-                      <div name="submit" class="flex justify-center mb-2 md:ml-6 md:float-right not-prose">
-                          <!-- <div class="relative w-[290px] h-[300px] aspect-w-3 aspect-h-3 sm:aspect-w-16 sm:aspect-h-9 bottom-4 left-3">
-                              <img class="object-cover transform scale-150" src="/storage/serviceIcon/graphic-tablet-svgrepo-com.svg">
-                              <div class="absolute inset-0"></div>
-                          </div> -->
-                          </div>
-                          <p><!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--]--></p>
-                      </div>
+    <div class="md:h-96 max-w-5xl md:prose-lg prose mx-auto mb-5">
+        <p>
+            <!--[-->We determine the needs and objectives of our clients before defining the procedure and the information required to produce a structured flow. We assess the low-code/no-code platforms available that suit the needs of our clients. Following an evaluation, we will present the selected low-code/no-code platform to our clients, explain how it functions, and discuss how it might improve their website or web apps. We will cooperate and support them throughout the process to make sure that their needs are addressed.<!--[]-->
+        </p>
+        <ul class="list-disc ml-6">
+            <li>Determine the needs and objectives of clients.</li>
+            <li>Define the procedure and required information.</li>
+            <li>Assess low-code/no-code platforms.</li>
+            <li>Present the selected platform.</li>
+            <li>Cooperate and support throughout the process.</li>
+        </ul>
+    </div>
 
+    <div class="not-prose">
+        <h1 class="center flex flex-col space-y-2 text-2xl md:mb-4">
+        <span>Techologies</span>
+    </h1>
+    <div class="grid grid-cols-3 gap-3 mt-2 ml-5">
+        <div class="flex flex-row items-center  space-x-2">
+            <span class="text-zinc-600">Laravel</span>
+        </div>
+        <div class="flex flex-row items-center space-x-2">
+            <span class="text-zinc-600">Tailwind CSS</span>
+        </div>
+        <div class="flex flex-row items-center space-x-2">
+            <span class="text-zinc-600">Amazon AWS</span>
+        </div>
+        <div class="flex flex-row items-center space-x-2">
+            <span class="text-zinc-600">Alpine.js</span>
+        </div>
+        <div class="flex flex-row items-center space-x-2">
+            <span class="text-zinc-600">Socket.io</span>
+        </div>
+    </div>
+</div>
 
+</section>
 
-              </section>
-           
             
 
 

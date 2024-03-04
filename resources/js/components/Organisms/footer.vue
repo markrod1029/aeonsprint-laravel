@@ -189,14 +189,37 @@
         background-color: #1D85BD ;
         
     }
-
+   
 
     @media (max-width: 767px) {
+
+        .hero-text {
+            font-size: 1.8rem;
+            max-width: 500px;
+            width: 100%;
+        }
+
     #service .product-services {
         width: 80%;
         margin: 0 auto;
         max-width: none;
     }
+    .about-us {
+        padding:20px 0 20px;
+        width: 90%;
+        text-align: center;
+        margin: 0 auto;
+        max-width: none;
+    }
+
+    .services-description {
+        width: 90%;
+
+    }
+    .about-us-images {
+        display: none;
+    }
+
     .banner-images{
 
         width:350px;
