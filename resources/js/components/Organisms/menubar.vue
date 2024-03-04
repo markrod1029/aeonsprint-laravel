@@ -106,8 +106,8 @@
     </nav>  
 <!-- Modal -->
 <div class="modal fade" id="openMenuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document" style="height:100%; width: 100%; margin:0; position:fixed;">
-        <div class="modal-content" style="height:100%; width: 100%; margin:0; position:fixed;">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document" style="height:100%; width: 100%; margin:0; position:absolute; right:0">
+        <div class="modal-content" style="height:100%; width: 100%; margin:0; position:absolute; right:0">
             <div class="modal-header">
                 <hr class="border-gray-200">
                 <button type="button" class="close" data-dismiss="modal"  aria-label="Close">
