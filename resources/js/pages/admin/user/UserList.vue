@@ -1,27 +1,29 @@
 <!-- Script setup -->
 <script setup>
 import axios from 'axios';
-import { onMounted, ref, reactive } from 'vue';
+import { onMounted, ref, reactive, watch } from 'vue';
 import { Form, Field, useSetFieldError } from 'vee-validate';
 import * as yup from 'yup';
 import { useToastr } from '../../../toastr.js';
+
+import { Bootstrap4Pagination } from 'laravel-vue-pagination';
   // Import the Footer and MenuBar components
   import AdminSideBar from '@/components/Organisms/adminSidebar.vue';
   import AdminMenuBar from '@/components/Organisms/adminMenubar.vue';
   import AdminFooter from '@/components/Organisms/adminFooter.vue';
   import UserListItem from './UserListItem.vue';
-  
+  import { debounce } from 'lodash';
 
 let toastr = useToastr();
-let users = ref([]);
+let users = ref({'data': []});
 let editing = ref(false);
 let formValues = reactive({ id: '', name: '', email: '', password: '' }); // Initialize with default values
 let form = ref(null);
+let searchQuery = ref(null);
 
 
-
-let getUser = () => {
-    axios.get('/api/users')
+let getUser = ( page = 1) => {
+    axios.get(`/api/users?page=${page}`)
         .then((response) => {
             users.value = response.data;
         })
@@ -140,7 +142,28 @@ let handleSubmit = (values, actions) => {
 
 
 
+// search User List
 
+
+let search = () => {
+    axios.get('/api/users/search', {
+
+        params: {
+            query: searchQuery.value,
+        }
+    })
+    .then(response => {
+        users.value = response.data;
+    })
+    .catch(error => {
+        console.log( error)
+    });
+
+ }
+
+ watch(searchQuery, debounce(() => {
+    search();
+ }, 300));
 
 onMounted(() => {
     getUser();
@@ -151,7 +174,9 @@ onMounted(() => {
 <!-- Template -->
 <template>
     <AdminMenuBar />
+
     <AdminSideBar />
+    
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
@@ -168,11 +193,23 @@ onMounted(() => {
                 </div>
             </div>
         </div>
+
         <div class="content">
             <div class="container-fluid">
+
+                <div class="d-flex justify-content-between">
+
                 <div class=" mb-4">
                     <button @click="addUser" type="button" class="btn btn-primary bg-blue">Create New User</button>
                 </div>
+
+                <div>
+                    <input type="text" name="" v-model="searchQuery" class="form-control" placeholder="Search..." id="">
+
+                </div>
+            </div>
+
+
                 <div class="card">
                     <div class="card-body">
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -190,9 +227,9 @@ onMounted(() => {
                                                 <th>Control</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody v-if="users.data.length > 0">
                                             <!-- Your table rows here -->
-                                            <UserListItem v-for="(user, index) in users" 
+                                            <UserListItem v-for="(user, index) in users.data" 
                                                  :key="user.id"
                                                  :user=user
                                                  :index=index
@@ -200,6 +237,15 @@ onMounted(() => {
                                                  @userDeleted="userDeleted"
                                                   />
                                         </tbody>
+
+                                        <tbody v-else> 
+
+                                            <tr>
+                                                <td colspan="6" class="text-center"> No result Found</td>
+                                            </tr>
+
+                                         </tbody>
+
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
@@ -213,6 +259,8 @@ onMounted(() => {
                                     </table>
                                 </div>
                             </div>
+                            <Bootstrap4Pagination :data="users" @pagination-change-page="getUser" />
+
                         </div>
                     </div>
                 </div>
