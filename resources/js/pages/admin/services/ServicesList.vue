@@ -1,14 +1,23 @@
 <!-- Script setup -->
 <script setup>
+// Import components
+import AdminSideBar from '@/components/Organisms/adminSidebar.vue';
+import AdminMenuBar from '@/components/Organisms/adminMenubar.vue';
+import AdminFooter from '@/components/Organisms/adminFooter.vue';
+import ServicesItem from './ServicesItem.vue';
+
+
 import axios from 'axios';
-import { onMounted, ref, reactive } from 'vue';
+import { onMounted, ref, reactive, watch } from 'vue';
 import { Form, Field} from 'vee-validate';
 import * as yup from 'yup';
-import { useToastr } from '../../toastr.js'
-
+import { useToastr } from '../../../toastr.js'
+import { debounce } from 'lodash'
 
 let toastr = useToastr();
 let services = ref([]);
+let searchServiceQuery = ref(null)
+
 let serviceEditing = ref(false);
 let formValues = reactive({ id: '', name: '' });
 let form = ref(null)
@@ -97,6 +106,27 @@ let handleSubmit = (values, actions) => {
     }
 }
 
+
+
+let searchService = () => {
+    axios.get('/api/services/search', {
+        params: {
+            query: searchServiceQuery.value,
+        }
+    })
+    .then(response => {
+        services.value = response.data
+    }).catch( error => {
+        console.log(error);
+    })
+}
+
+
+watch(searchServiceQuery, debounce(() => {
+    searchService();
+}, 300));
+
+
 onMounted(() => {
     getService();
 
@@ -129,10 +159,20 @@ onMounted(() => {
 
         <div class="content">
             <div class="container-fluid">
-                <div class=" mb-4">
-                    <button type="button" @click="addService" class="btn btn-primary bg-blue" >Create New User</button>
+
+                <div class="d-flex justify-content-between">
+                    <div class=" mb-4">
+                    <button type="button" @click="addService"  class="btn btn-primary bg-blue" >Create New User</button>
                 </div>
 
+                <div>
+
+                    <input type="text" name="search" id="search" v-model="searchServiceQuery" placeholder="Search....." class="form-control">
+                </div>
+
+                </div>
+    
+    
                 <div class="card">
                     <div class="card-body">
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -147,15 +187,22 @@ onMounted(() => {
                                                 <th>Control</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody v-if="services.length > 0">
                                             <!-- Your table rows here -->
-                                            <tr v-for="service in services" :key="service.id">
-                                                <td>{{ service.id }}</td>
-                                                <td>{{ service.name }}</td>
-                                                <td>
-                                                    <a href="#" @click.prevent="editService(service)" class="btn btn-primary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i> </a>
-                                                    <a href="#" @click.prevent="comfirmDeleteService(service)" class="btn btn-danger btn-sm " style="margin-right: 5px;"><i class="fa fa-trash"></i> </a>
-                                                </td>
+
+
+                                            <ServicesItem v-for="(service, index) in services"
+                                                :key="service.id"
+                                                :service=service
+                                                :index=index
+
+                                                />
+                                           
+                                        </tbody>
+
+                                        <tbody v-else>
+                                            <tr>
+                                                <td colspan="6" class="text-center"> No Service Found </td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
@@ -239,17 +286,6 @@ onMounted(() => {
 </template>
 
 <script>
-// Import components
-import AdminSideBar from '@/components/Organisms/adminSidebar.vue';
-import AdminMenuBar from '@/components/Organisms/adminMenubar.vue';
-import AdminFooter from '@/components/Organisms/adminFooter.vue';
 
-export default {
-    components: {
-        // Register components
-        AdminSideBar,
-        AdminMenuBar,
-        AdminFooter
-    }
-}
+
 </script>

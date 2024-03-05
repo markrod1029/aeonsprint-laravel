@@ -23,9 +23,10 @@ import ProjectTripidkard from './projects/tripidkard.vue';
 // Admin Dashboard
 
 import AdminDashboard from './pages/admin/dashboard.vue';
-import AdminProjects from './pages/admin/projects.vue';
-import AdminServices from './pages/admin/services.vue';
-import AdminUsers from './pages/admin/user/UserList.vue';
+import AdminProjects from './pages/admin/projects/projectsList.vue';
+import AdminServices from './pages/admin/services/servicesList.vue';
+import AdminUsers from './pages/admin/users/UserList.vue';
+import AdminAppointment from './pages/admin/appointment/AppointmentList.vue';
 export default [
   
     {
@@ -208,6 +209,16 @@ export default [
         component: AdminUsers,
         meta: {
             title: 'Admin Users'
+        }
+    },
+
+
+    {
+        path: '/admin/appointments',
+        name: 'admin.appointments',
+        component: AdminAppointment,
+        meta: {
+            title: 'Admin Appointments List'
         }
     },
 

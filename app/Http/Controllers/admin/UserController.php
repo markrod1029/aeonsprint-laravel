@@ -128,13 +128,19 @@ class UserController extends Controller
     }
 
 
-    public function search()
-    {
+    public function search() {
         $searchQuery = request('query');
 
         $users = User::where('name', 'like', "%{$searchQuery}%")->paginate();
 
         return response()->json($users);
 
+    }
+
+    public function bulkDelete(){
+
+        User::whereIn('id', request('ids'))->delete();
+
+        return response()->json(['message' => 'Users deleted Successfuly']);
     }
 }

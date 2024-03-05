@@ -26,6 +26,8 @@ let getUser = ( page = 1) => {
     axios.get(`/api/users?page=${page}`)
         .then((response) => {
             users.value = response.data;
+            selectedUsers.value = [];
+            selectAll.value = false;
         })
         .catch((error) => {
             console.error('Error fetching users:', error);
@@ -61,7 +63,7 @@ const editUserSchema = yup.object({
 let createuser = (values, { resetForm, setErrors }) => {
     axios.post('/api/users', values)
         .then((response) => {
-            users.value.unshift(response.data);
+            users.value.data.unshift(response.data);
             $('#userFormModal').modal('hide');
             toastr.success('Added User Successfuly');
             resetForm();
@@ -140,9 +142,52 @@ let handleSubmit = (values, actions) => {
     }
 };
 
+// select Delete User
+let selectedUsers = ref([]);
+
+let toggleSelection = (user) => {
+    
+    let index = selectedUsers.value.indexOf(user.id); 
+    if(index === -1){
+        
+        selectedUsers.value.push(user.id);
+    } else {
+        selectedUsers.value.splice(index, 1);
+    }
+    console.log(selectedUsers.value);
+}
+
+let bulkDelete = () => {
+    axios.delete('/api/users', {
+        data: {
+            ids: selectedUsers.value
+        }
+    })
+    .then(response => {
+        users.value.data =  users.value.data.filter(user => !selectedUsers.value.includes(user.id));
+        selectedUsers.value = [];
+        // toastr.success('Users Deleted Successfuly ');
+        toastr.success(response.data.message);
+    })
+
+};
+
+let selectAll = ref(false);
+let selectAllUsers = () => {
+
+    if(selectAll.value) {
+        selectedUsers.value = users.value.data.map(user => user.id);
+    }else {
+        selectedUsers.value = [];
+    }
+    
+    console.log(selectedUsers.value)
+
+}
 
 
 // search User List
+
 
 
 let search = () => {
@@ -199,10 +244,27 @@ onMounted(() => {
 
                 <div class="d-flex justify-content-between">
 
-                <div class=" mb-4">
-                    <button @click="addUser" type="button" class="btn btn-primary bg-blue">Create New User</button>
+                <div class=" mb-4 d-flex">
+
+                    <button @click="addUser" type="button" class="btn btn-primary bg-blue ml-2">
+                        <i class="fa fa-plus-circle"></i>
+                        Create New User
+                    </button>
+
+                    <div  v-if="selectedUsers.length > 0 ">
+                        <button @click="bulkDelete" type="button" class="btn btn-danger bg-danger ml-2">
+                            <i class="fa fa-trash"></i>
+                            Delete Selected User
+                        </button>
+
+                        <span class="ml-2">Selected {{ selectedUsers.length }} Users</span>
+
+                    </div>
+
+
                 </div>
 
+              
                 <div>
                     <input type="text" name="" v-model="searchQuery" class="form-control" placeholder="Search..." id="">
 
@@ -219,7 +281,9 @@ onMounted(() => {
                                     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+
+                                                <th><input type="checkbox" v-model="selectAll" @change="selectAllUsers" ></th>
+                                                <th>#</th>
                                                 <th>User Name</th>
                                                 <th>Email</th>
                                                  <th>Register Date</th>
@@ -235,20 +299,23 @@ onMounted(() => {
                                                  :index=index
                                                  @editUser="editUser"
                                                  @userDeleted="userDeleted"
+                                                 @toggleSelection="toggleSelection"
+                                                 :select-all ="selectAll"
                                                   />
                                         </tbody>
 
                                         <tbody v-else> 
 
                                             <tr>
-                                                <td colspan="6" class="text-center"> No result Found</td>
+                                                <td colspan="7" class="text-center"> No Users Found</td>
                                             </tr>
 
                                          </tbody>
 
                                         <tfoot>
                                             <tr>
-                                                <th>ID</th>
+                                                <th></th>
+                                                <th>#</th>
                                                 <th>User Name</th>
                                                 <th>Email</th>
                                                 <th>Register Date</th>

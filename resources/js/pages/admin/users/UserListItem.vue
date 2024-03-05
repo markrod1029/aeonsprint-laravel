@@ -1,6 +1,7 @@
 <template>
    <tr>
-    <td>{{ user.id }}</td>
+    <td><input type="checkbox" :checked="selectAll"  @change="toggleSelection" name="" id=""></td>
+    <td>{{ index + 1 }}</td>
     <td>{{ user.name }}</td>
     <td>{{ user.email }}</td>
     <td>{{ formatDate(user.created_at) }}</td>
@@ -80,10 +81,20 @@ let changeRole = (user, role) => {
     })
 }
 
-defineProps({
+
+// delete user selected
+
+let toggleSelection = () => {
+    emit('toggleSelection', props.user);
+}
+
+
+
+let props = defineProps({
 
     user: Object,
     index: Number,
+    selectAll: Boolean
 
 });
 

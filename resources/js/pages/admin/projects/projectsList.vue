@@ -38,14 +38,12 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="project in projects" :key="project.id">
-                          <td>{{ project.id }}</td>
-                          <td>{{ project.name }}</td>
-                          <td>{{ project.description }}</td>
-                          <td>
-                            <a href="#" @click.prevent="editProject(project)" class="btn btn-primary btn-sm" style="margin-right: 5px;"><i class="fa fa-edit"></i> </a>
-                          </td>
-                        </tr>
+                        <ProjectItem 
+                          v-for="(project, index) in projects"
+                          :key="project.id"
+                          :project=project
+                          :index=index
+                        />
                       </tbody>
                       <tfoot>
                         <tr>
@@ -100,11 +98,13 @@
   import { onMounted, ref, reactive } from 'vue';
   import { Form, Field } from 'vee-validate';
   import * as yup from 'yup';
+
   // Import the Footer and MenuBar components
   import AdminSideBar from '@/components/Organisms/adminSidebar.vue';
   import AdminMenuBar from '@/components/Organisms/adminMenubar.vue';
   import AdminFooter from '@/components/Organisms/adminFooter.vue';
-  
+  import ProjectItem  from './ProjectItem.vue';
+
   let projects = ref([]);
   let formValues = reactive({
     id: '',

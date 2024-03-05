@@ -41,7 +41,7 @@ Route::post('/contact', ContactController::class)->name('contact');
 Route::post('/api/services', [ServiceController::class, 'store']);
 Route::put('/api/services/{service}', [ServiceController::class, 'update']);
 Route::delete('/api/services/{service}', [ServiceController::class, 'destroy']);
-
+Route::get('/api/services/search', [ServiceController::class, 'search']);
 
 Route::get('/api/projects', [ProjectController::class, 'index']);
 Route::post('/api/projects', [ProjectController::class, 'store']);
@@ -53,6 +53,7 @@ Route::put('/api/users/{user}', [UserController::class, 'update']);
 Route::delete('/api/users/{user}', [UserController::class, 'destroy']);
 Route::get('/api/users/search', [UserController::class, 'search']);
 
+Route::delete('/api/users', [UserController::class, 'bulkDelete']);
 
 
 Route::patch('/api/users/{user}/change-role', [UserController::class, 'changeRole']);

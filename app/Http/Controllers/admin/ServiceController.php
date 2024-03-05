@@ -80,5 +80,13 @@ class ServiceController extends Controller
         return response()->noContent();
 
     }
+    public function search() {
+
+        $searchServiceQuery = request('query');
+        $services = Service::where('name', 'like', "%{$searchServiceQuery}%")->get();
+        
+        return response()->json($services);
+
+    }
 }
 
