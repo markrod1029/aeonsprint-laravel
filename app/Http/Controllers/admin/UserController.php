@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         //
 
-      $users = User::latest()->get();
+      $users = User::latest()->paginate(2);
 
     //   $users = User::latest()->get()->map(function ($user) {
         
@@ -125,5 +125,16 @@ class UserController extends Controller
         ]);
 
         return response()->json(['success' => true ]);
+    }
+
+
+    public function search()
+    {
+        $searchQuery = request('query');
+
+        $users = User::where('name', 'like', "%{$searchQuery}%")->paginate();
+
+        return response()->json($users);
+
     }
 }
