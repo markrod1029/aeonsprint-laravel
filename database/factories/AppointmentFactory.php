@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,13 @@ class AppointmentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'client_id' => Client::factory()->create()->id,
+            // 'client_id' => Client::inRandomOrder()->first()->id,
+            'title' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'start_time' => $startTime = $this->faker->dateTimeBetween('-1 year', '+1 year'),
+            'end_time' =>Carbon::parse($startTime)->addHours(2),
+            'status' => rand(1, 3),
         ];
     }
 }
