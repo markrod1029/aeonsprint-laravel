@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\admin\ServiceController;
+use App\Http\Controllers\admin\AppointmentController;
+use App\Http\Controllers\admin\AppointmentStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +36,10 @@ use App\Http\Controllers\admin\ServiceController;
 //     return view('admin.app'); 
 // });
 
+Route::get('/api/appointments', [AppointmentController::class, 'index']);
+Route::get('/api/appointments-status', [AppointmentStatusController::class, 'getStatusWithCount']);
+ 
 Route::get('/api/services', [ServiceController::class, 'index']);
-
 Route::post('/contact', ContactController::class)->name('contact');
 
 Route::post('/api/services', [ServiceController::class, 'store']);

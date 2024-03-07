@@ -2,10 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Client;
+use App\Enums\AppointmentStatus;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Appointment extends Model
 {
     use HasFactory;
+
+    protected $casts =  [
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
+        'status' => AppointmentStatus::class,
+    ];
+    // Define relationship with Client model
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
+    }
+
 }
+
