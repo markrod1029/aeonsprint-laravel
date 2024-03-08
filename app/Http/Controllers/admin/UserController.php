@@ -15,7 +15,21 @@ class UserController extends Controller
     {
         //
 
-      $users = User::latest()->paginate(2);
+    
+
+        $users = User::query()
+        ->when(request('query'), function ($query, $searchQuery) {
+            $query->where('name', 'like', "%{$searchQuery}%");
+        })
+        ->latest()
+        ->paginate(5);
+
+        return response()->json($users);
+
+
+        // return $users;
+
+        // $users = User::latest()->paginate(5);
 
     //   $users = User::latest()->get()->map(function ($user) {
         
@@ -29,7 +43,6 @@ class UserController extends Controller
     //     ];
     //   });
 
-        return $users;
     }
 
     /**
@@ -128,14 +141,6 @@ class UserController extends Controller
     }
 
 
-    public function search() {
-        $searchQuery = request('query');
-
-        $users = User::where('name', 'like', "%{$searchQuery}%")->paginate();
-
-        return response()->json($users);
-
-    }
 
     public function bulkDelete(){
 

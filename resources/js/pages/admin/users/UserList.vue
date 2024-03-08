@@ -20,18 +20,23 @@ let editing = ref(false);
 let formValues = reactive({ id: '', name: '', email: '', password: '' }); // Initialize with default values
 let form = ref(null);
 let searchQuery = ref(null);
+let emit = defineEmits(['userDeleted', 'editUser', 'confirmUserDeletion']);
 
 
 let getUser = ( page = 1) => {
-    axios.get(`/api/users?page=${page}`)
-        .then((response) => {
-            users.value = response.data;
-            selectedUsers.value = [];
-            selectAll.value = false;
-        })
-        .catch((error) => {
-            console.error('Error fetching users:', error);
-        });
+    axios.get(`/api/users?page=${page}`, {
+        params: {
+            query: searchQuery.value,
+        }
+    })
+    .then((response) => {
+        users.value = response.data;
+        selectedUsers.value = [];
+        selectAll.value = false;
+    })
+    .catch((error) => {
+        console.error('Error fetching users:', error);
+    });
 };
 
 const createUserSchema = yup.object({
@@ -86,6 +91,29 @@ let addUser = () => {
 
 
 
+let userIdDelete = ref(null);
+
+// confirmation Deleted
+let confirmUserDeletion = (id) => {
+    userIdDelete.value = id;
+    $('#deleteUserFormModal').modal('show');
+}
+
+// delete to Controller
+let deleteUser = () => {
+    axios.delete(`/api/users/${userIdDelete.value}`)
+    .then(() => {
+        $('#deleteUserFormModal').modal('hide');
+        // users.value = users.value.filter(user => user.id !== userIdDelete.value)
+        emit('userDeleted', userIdDelete.value), 
+        toastr.success('User Deleted Successfuly');
+        users.value.data = users.value.data.filter(user => user.id !== userIdDelete.value);
+    })
+
+}
+
+
+
 
 let editUser = (user) => {
     editing.value = true;
@@ -128,9 +156,9 @@ let updateUser = (values, { resetForm, setErrors }) => {
 
 
 
-let userDeleted = (userId) => {
-        users.value = users.value.filter(user => user.id !== userId)
-}
+// let userDeleted = (userId) => {
+//         users.value = users.value.filter(user => user.id !== userId)
+// }
 
 
 let handleSubmit = (values, actions) => {
@@ -190,24 +218,24 @@ let selectAllUsers = () => {
 
 
 
-let search = () => {
-    axios.get('/api/users/search', {
+// let search = () => {
+//     axios.get('/api/users/search', {
 
-        params: {
-            query: searchQuery.value,
-        }
-    })
-    .then(response => {
-        users.value = response.data;
-    })
-    .catch(error => {
-        console.log( error)
-    });
+//         params: {
+//             query: searchQuery.value,
+//         }
+//     })
+//     .then(response => {
+//         users.value = response.data;
+//     })
+//     .catch(error => {
+//         console.log( error)
+//     });
 
- }
+//  }
 
  watch(searchQuery, debounce(() => {
-    search();
+    getUser();
  }, 300));
 
 onMounted(() => {
@@ -298,6 +326,7 @@ onMounted(() => {
                                                  :user=user
                                                  :index=index
                                                  @editUser="editUser"
+                                                 @confirm-user-deletion = "confirmUserDeletion"
                                                  @userDeleted="userDeleted"
                                                  @toggleSelection="toggleSelection"
                                                  :select-all ="selectAll"
@@ -378,6 +407,37 @@ onMounted(() => {
     </div>
 
 
+
+    <div class="modal fade" id="deleteUserFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <span>Delete User Account</span>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Form -->
+
+                <div class="modal-body">
+                    <h5>Are You Sure you want to Delete this User</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">Close</button>
+                        <button @click.prevent="deleteUser" type="submit" class="btn btn-danger bg-danger">delete</button>
+                </div>
+
+                
+            </div>
+        </div>
+
+
+    </div>
+
+    
+    
 
     
 </template>
