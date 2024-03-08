@@ -59,8 +59,30 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'client_id' => 'required', 
+            'title' => 'required', 
+            'description' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required'
+        ],
+    [
+        'client_id.required' => 'The Client field is required'
+    ]);
+    
+        Appointment::create([
+            'title' => $validated['title'], 
+            'client_id' =>  $validated['client_id'],
+            'start_time' => $validated['start_time'],
+            'end_time' =>  $validated['end_time'],
+            'description' => $validated['description'],
+            'status' => AppointmentStatus::SCHEDULED,
+            
+        ]);
+    
+        return response()->json(['message' => 'success']);
     }
+    
 
     /**
      * Display the specified resource.
@@ -72,25 +94,52 @@ class AppointmentController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * string $id,
      */
-    public function edit(string $id)
+    public function edit(Appointment $appointment)
     {
         //
+        return  $appointment;
+       
     }
 
     /**
      * Update the specified resource in storage.
+     * 
+     * Request $request, string $id
      */
-    public function update(Request $request, string $id)
+    public function update(Appointment $appointment)
     {
         //
+
+        $validated = request()->validate([
+            'client_id' => 'required', 
+            'title' => 'required', 
+            'description' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required'
+        ],
+    [
+        'client_id.required' => 'The Client field is required'
+    ]);
+
+    $appointment->update($validated);
+
+    return response()->json(['success' => true]);
+    
+
     }
 
     /**
      * Remove the specified resource from storage.
+     * string $id
      */
-    public function destroy(string $id)
+    public function destroy(Appointment $appointment)
     {
         //
+        $appointment->delete();
+        
+        return response()->json(['success' => true]);
+
     }
 }

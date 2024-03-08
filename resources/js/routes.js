@@ -27,6 +27,7 @@ import AdminProjects from './pages/admin/projects/projectsList.vue';
 import AdminServices from './pages/admin/services/servicesList.vue';
 import AdminUsers from './pages/admin/users/UserList.vue';
 import AdminAppointment from './pages/admin/appointment/AppointmentList.vue';
+import AdminAppointmentForm from './pages/admin/appointment/AppointmentForm.vue';
 export default [
   
     {
@@ -219,6 +220,24 @@ export default [
         component: AdminAppointment,
         meta: {
             title: 'Admin Appointments List'
+        }
+    },
+
+    {
+        path: '/admin/appointments/create',
+        name: 'admin.appointments/create',
+        component: AdminAppointmentForm,
+        meta: {
+            title: 'Admin Appointments Form'
+        }
+    },
+
+    {
+        path: '/admin/appointments/:id/edit',
+        name: 'admin.appointments.edit',
+        component: AdminAppointmentForm,
+        meta: {
+            title: 'Admin Appointments Form'
         }
     },
 
