@@ -43,8 +43,9 @@ use App\Http\Controllers\admin\ClientController;
 
 // Client Controller
 
+Route::middleware('auth')->group(function () {
+   
 Route::get('/api/clients', [ClientController::class, 'index']);
-
 
 // appointment Controller
 Route::get('/api/appointments', [AppointmentController::class, 'index']);
@@ -57,10 +58,6 @@ Route::delete('/api/appointments/{appointment}', [AppointmentController::class, 
 
 // AppointmentStatus Controller 
 Route::get('/api/appointments-status', [AppointmentStatusController::class, 'getStatusWithCount']);
-
-
-// contact Controller not finish
-Route::post('/contact', ContactController::class)->name('contact');
 
 
 
@@ -86,4 +83,12 @@ Route::delete('/api/users', [UserController::class, 'bulkDelete']);
 
 
 Route::patch('/api/users/{user}/change-role', [UserController::class, 'changeRole']);
-Route::get('{view}', ApplicationController::class)->where('view', '(.*)');
+    
+});
+
+
+// contact Controller not finish
+Route::post('/contact', ContactController::class)->name('contact');
+
+
+Route::get('{view}', ApplicationController::class)->where('view', '(.*)')->middleware('auth');

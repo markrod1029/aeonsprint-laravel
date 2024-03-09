@@ -21,13 +21,14 @@ import ProjectTripidkard from './projects/tripidkard.vue';
 
 
 // Admin Dashboard
-
+import AdminLogin from './pages/auth/login.vue'
 import AdminDashboard from './pages/admin/dashboard.vue';
 import AdminProjects from './pages/admin/projects/projectsList.vue';
 import AdminServices from './pages/admin/services/servicesList.vue';
 import AdminUsers from './pages/admin/users/UserList.vue';
 import AdminAppointment from './pages/admin/appointment/AppointmentList.vue';
 import AdminAppointmentForm from './pages/admin/appointment/AppointmentForm.vue';
+
 export default [
   
     {
@@ -176,6 +177,17 @@ export default [
 
 
     // admin Dashboard
+
+
+    {
+        path: '/admin/login',
+        name: 'admin.login',
+        component: AdminLogin,
+        meta: {
+            title: 'login'
+        }
+    },
+
 
     {
         path: '/admin/dashboard',

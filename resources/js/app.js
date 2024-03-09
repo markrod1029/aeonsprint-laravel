@@ -12,7 +12,7 @@ import Routes from './routes.js';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-
+import Login from './pages/auth/login.vue';
 // Idagdag ang lahat ng mga solid icons sa library
 library.add(fas);
 
@@ -27,4 +27,6 @@ const router = createRouter({
 });
 
 app.use(router);
+
+app.component('Login', Login);
 app.mount('#app');
