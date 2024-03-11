@@ -76,12 +76,13 @@
             </li>
             <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}" class="nav-link">
-                    @csrf
-                    <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
-                        <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p class="text-white">Logout</p>
-                    </a>
-                </form>
+    @csrf
+    <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+        <i class="nav-icon fas fa-sign-out-alt"></i>
+        <p class="text-white">Logout</p>
+    </a>
+</form>
+
             </li>
 
 

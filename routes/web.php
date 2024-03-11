@@ -56,6 +56,8 @@ Route::delete('/api/appointments/{appointment}', [AppointmentController::class, 
 
 
 
+Route::get('/api/stats/appointments', [AppointmentStatusController::class]);
+
 // AppointmentStatus Controller 
 Route::get('/api/appointments-status', [AppointmentStatusController::class, 'getStatusWithCount']);
 
@@ -83,7 +85,8 @@ Route::delete('/api/users', [UserController::class, 'bulkDelete']);
 
 
 Route::patch('/api/users/{user}/change-role', [UserController::class, 'changeRole']);
-    
+ 
+
 });
 
 
@@ -91,4 +94,4 @@ Route::patch('/api/users/{user}/change-role', [UserController::class, 'changeRol
 Route::post('/contact', ContactController::class)->name('contact');
 
 
-Route::get('{view}', ApplicationController::class)->where('view', '(.*)')->middleware('auth');
+Route::get('{view}', ApplicationController::class)->where('view', '(.*)');

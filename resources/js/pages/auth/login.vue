@@ -8,6 +8,11 @@
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">Sign in to start your session</p>
+                    <!-- Allert Start  -->
+                    <div v-if="errorMessage" class="alert alert-danger" role="alert">
+                    {{ errorMessage }}
+                    </div>
+                    <!-- Alert End -->
                     <form @submit.prevent="handleSubmit" method="post">
                         <div class="input-group mb-3">
                             <input v-model="form.email" type="email" class="form-control" placeholder="Email">
@@ -36,7 +41,17 @@
                             </div>
 
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block bg-primary">Sign In</button>
+                                <button type="submit" class="btn btn-primary btn-block bg-primary" :disable="loading">
+                                    
+                                    <div v-if="loading" class="spinner-border text-light spinner-border-sm" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+
+                                    <span v-else>
+                                        Sign In
+                                    </span>
+                                
+                                </button>
                             </div>
 
                         </div>
@@ -54,18 +69,32 @@
 
 <script setup>
 
-import {reactive } from 'vue';
+import {reactive, ref } from 'vue';
 
 const form = reactive({
     'email': '',
     'password': '',
 });
 
+const errorMessage = ref('');
+const loading = ref(false);
+
 let handleSubmit = () => {
+
+    loading.value = true;
+    errorMessage.value = '';
     axios.post('/login', form)
     .then(() => {
         window.location.href="/admin/dashboard";
     })
+    .catch((error) => {
+        errorMessage.value = error.response.data.message;
+    })
+
+    .finally(() => {
+        loading.value = false;
+    })
 }
+
 
 </script>

@@ -37,8 +37,13 @@ class ContactMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.contact',
         );
+    }
+
+    public function build() {
+     
+        return $this->subject('Mail From me')->replyTo($this->email)->view('emails.contact');
     }
 
     /**

@@ -53,21 +53,22 @@
    
                         <div class="relative p-16 my-12 hover:shadow-xl:hover contact-us-form">
                             <h2 class="text-2xl font-bold mb-4">We're Ready, Let's Talk.</h2>
-                                            <form action="submit_form.php" method="POST">
+                                            <form @submit.prevent="submit" method="POST">
                                             
                                                 <div class="mb-4">
                                                     <label for="name" class="block text-sm font-medium text-gray-700">Name *</label>
-                                                    <input type="text" id="name" name="name" required class="mt-1 focus:ring-blue-900 focus:border-blue-900  block w-full h-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    <input v-model="form.name" type="text" id="name" name="name" required class="mt-1 focus:ring-blue-900 focus:border-blue-900  block w-full h-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                 </div>
                                                 
                                                 <div class="mb-4">
                                                     <label for="email" class="block text-sm font-medium text-gray-700">Email  *</label>
-                                                    <input type="email" id="email" name="email" required class="mt-1 focus:ring-blue-800 focus:border-blue-800 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    <input v-model="form.email" type="email" id="email" name="email" required class="mt-1 focus:ring-blue-800 focus:border-blue-800 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
                                                 </div>
 
                                                 <div class="mb-4">
                                                     <label for="email" class="block text-sm font-medium text-gray-700">Information about the services we offer *</label>
-                                                    <select type="email" id="email" name="email" required class="mt-1 focus:ring-blue-500 focus:border-blue-500  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" >
+                                                    <select v-model="form.service" type="service" id="service"  required class="mt-1 focus:ring-blue-500 focus:border-blue-500  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" >
                                                     <option value="" hidden>Please Select</option>
                                                     <option value="Web App Development">Software Development</option>
                                                     <option value="Graphic Design">Graphic Design</option>
@@ -79,13 +80,15 @@
                                                     <option value="Startup Development">Maintenance & Support</option>
 
                                                     </select>
+                                                    <!-- <span v-if="form.errors.email" class="text-sm m2 text-red">{{form.errors.email}}</span> -->
+
                                                 </div>
                                                 
                                                 
                                                 
                                                 <div class="mb-4">
                                                     <label for="message" class="block text-sm font-medium text-gray-700">Description  *</label>
-                                                    <textarea id="message" name="message" rows="4" required class="mt-1 focus:ring-blue-500 focus:border-blue-500  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                                                    <textarea v-model="form.body" id="message" name="message" rows="4" required class="mt-1 focus:ring-blue-500 focus:border-blue-500  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
                                                 </div>
 
                                                 <button class="z-20 inline-flex items-center justify-center px-5 py-2 text-base font-medium leading-6 tracking-wide rounded shadow-sm hover:text-white text-white bg-gradient-to-b from-blue-400 to-blue-500 button whitespace-nowrap active:ring-2 active:ring-brand-600 focus:outline-none" name="submit"><!--[-->Submit<!--]--></button>
@@ -123,16 +126,32 @@
 
 </template>
 
-<script>
+<script setup>
 // Import the Footer and MenuBar components
 import Footer from '@/components/Organisms/footer.vue';
 import MenuBar from '@/components/Organisms/menubar.vue';
+import { ref, reactive} from 'vue';
+import { useToastr } from '@/toastr.js';
+import axios from 'axios';
 
-export default {
-  components: {
-    // Register the Footer and MenuBar components
-    Footer,
-    MenuBar
-  },
+const toastr = useToastr();
+const form = reactive({
+name: '',
+email: '',
+service: '',
+body:  '',
+});
+
+const submit = () => {
+    axios.post('/contact', form)
+    .then(() => {
+        toastr.success('Appointement Added Successfuly');
+
+    }).catch((error)  => {
+
+        console.log(error);
+    });
 }
+
+
 </script>

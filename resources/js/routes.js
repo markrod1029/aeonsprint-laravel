@@ -1,21 +1,21 @@
-import Dashboard from './dashboard/index.vue';
-import AboutUs from './abouts/about-us.vue';
-import Project from './projects/project.vue';
-import ContactUs from './contacts/contact-us.vue';
+import Dashboard from './components/Frontend/dashboard/index.vue';
+import AboutUs from './components/Frontend/abouts/about-us.vue';
+import Project from './components/Frontend/projects/project.vue';
+import ContactUs from './components/Frontend/contacts/contact-us.vue';
 
 // Services
-import ServiceSoftware from './services/software.vue';
-import ServiceGraphicDesign from './services/graphic-design.vue';
-import ServiceBusinessCard from './services/business-card.vue';
-import ServiceChatbot from './services/chatbot.vue';
-import ServiceDigital from './services/digital-marketing.vue';
-import ServiceSEO from './services/seo.vue';
-import ServiceCTEM from './services/training-event.vue';
-import ServiceConsultancy from './services/consultancy.vue';
-import ServiceMaintenance from './services/maintenance.vue';
+import ServiceSoftware from './components/Frontend/services/software.vue';
+import ServiceGraphicDesign from './components/Frontend/services/graphic-design.vue';
+import ServiceBusinessCard from './components/Frontend/services/business-card.vue';
+import ServiceChatbot from './components/Frontend/services/chatbot.vue';
+import ServiceDigital from './components/Frontend/services/digital-marketing.vue';
+import ServiceSEO from './components/Frontend/services/seo.vue';
+import ServiceCTEM from './components/Frontend/services/training-event.vue';
+import ServiceConsultancy from './components/Frontend/services/consultancy.vue';
+import ServiceMaintenance from './components/Frontend/services/maintenance.vue';
 
 // projects
-import ProjectTripidkard from './projects/tripidkard.vue';
+import ProjectTripidkard from './components/Frontend/projects/tripidkard.vue';
 
 // import NotFound from './404/error.vue';
 
