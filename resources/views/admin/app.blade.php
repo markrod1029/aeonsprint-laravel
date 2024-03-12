@@ -13,10 +13,12 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini ">
     
     <div class="wrapper" id="app">
     
+    
+       
         <router-view>
             
         </router-view>

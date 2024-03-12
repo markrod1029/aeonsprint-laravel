@@ -15,7 +15,8 @@ class ContactController extends Controller
             $request->body,
         ));
 
-        Return redirect()->back();
+        return redirect()->back();
 
     }  
 }
+ 

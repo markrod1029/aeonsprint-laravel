@@ -5,11 +5,12 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\AppointmentController;
+use App\Http\Controllers\admin\DashboardStatController;
 use App\Http\Controllers\admin\AppointmentStatusController;
-use App\Http\Controllers\admin\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,8 +44,16 @@ use App\Http\Controllers\admin\ClientController;
 
 // Client Controller
 
-Route::get('/api/clients', [ClientController::class, 'index']);
+// Route::middleware('auth')->group(function () {
 
+// dashboard Status Controller 
+
+Route::get('/api/stats/appointments', [DashboardStatController::class, 'appointments']);
+Route::get('/api/stats/users', [DashboardStatController::class, 'users']);
+
+    
+//    Client Controller
+Route::get('/api/clients', [ClientController::class, 'index']);
 
 // appointment Controller
 Route::get('/api/appointments', [AppointmentController::class, 'index']);
@@ -55,12 +64,10 @@ Route::delete('/api/appointments/{appointment}', [AppointmentController::class, 
 
 
 
+// Route::get('/api/stats/appointments', [AppointmentStatusController::class]);
+
 // AppointmentStatus Controller 
 Route::get('/api/appointments-status', [AppointmentStatusController::class, 'getStatusWithCount']);
-
-
-// contact Controller not finish
-Route::post('/contact', ContactController::class)->name('contact');
 
 
 
@@ -86,4 +93,13 @@ Route::delete('/api/users', [UserController::class, 'bulkDelete']);
 
 
 Route::patch('/api/users/{user}/change-role', [UserController::class, 'changeRole']);
+ 
+
+// });
+
+
+// contact Controller not finish
+Route::post('/contact', ContactController::class)->name('contact');
+
+
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)');

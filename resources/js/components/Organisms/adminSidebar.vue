@@ -10,8 +10,6 @@
 
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 
-        
-    
         <div class="image">
             <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" width="200" class="img-circle elevation-2" alt="User Image">
             </div>
@@ -74,15 +72,16 @@
                         <p class="text-white" >Profile</p>
                 </router-link>
             </li>
-
             <li class="nav-item">
-                <router-link to="/admin/logout" active-class="active" class="nav-link">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                <form method="POST" action="{{ route('logout') }}" class="nav-link">
+                    <!-- @csrf -->
+                    <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p class="text-white">Logout</p>
-                </router-link>
-            </li>
+                    </a>
+                </form>
 
-        
+            </li>
         </ul>
     </nav>
 
