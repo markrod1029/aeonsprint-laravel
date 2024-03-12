@@ -22,7 +22,7 @@ import ProjectTripidkard from './components/Frontend/projects/tripidkard.vue';
 
 // Admin Dashboard
 import AdminLogin from './pages/auth/login.vue'
-import AdminDashboard from './pages/admin/dashboard.vue';
+import AdminDashboard from './pages/admin/dashboard/dashboard.vue';
 import AdminProjects from './pages/admin/projects/projectsList.vue';
 import AdminServices from './pages/admin/services/servicesList.vue';
 import AdminUsers from './pages/admin/users/UserList.vue';

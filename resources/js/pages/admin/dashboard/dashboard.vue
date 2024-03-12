@@ -30,7 +30,7 @@
                   <div class="small-box bg-info">
                       <div class="inner">
                           <div class="d-flex justify-content-between">
-                              <h3>{{ totalAppointmentCount }}</h3>
+                              <h3>{{ totalAppointmentsCount }}</h3>
                               <select @change="getAppointmentCount()" v-model="selectedAppointmentStatus"
                                   style="height: 2.4rem; outline: 2px solid transparent;" class="px-4 rounded border-0 text-black">
                                   <option value="all">All</option>
@@ -55,18 +55,18 @@
                   <div class="small-box bg-info">
                       <div class="inner">
                           <div class="d-flex justify-content-between">
-                              <h3>0</h3>
-                              <select
+                              <h3>{{ totalUsersCount }}</h3>
+                              <select @change="getUsersCount()" v-model="selectedDateRange"
                                   style="height: 2.4%; outline: 2px solid transparent;" class="px-4 rounded border-0 text-black">
-                                  <option value="TODAY">Today</option>
-                                  <option value="30">30 days</option>
-                                  <option value="60">60 days</option>
-                                  <option value="360">360 days</option>
-                                  <option value="MTD">Month to Date</option>
-                                  <option value="YTD">Year to Date</option>
+                                  <option value="today">Today</option>
+                                  <option value="30_days">30 days</option>
+                                  <option value="60_days">60 days</option>
+                                  <option value="360_days">360 days</option>
+                                  <option value="month_to_date">Month to Date</option>
+                                  <option value="year_to_date">Year to Date</option>
                               </select>
                           </div>
-                          <p>Users</p>
+                          <p class="text-black">Users</p>
                       </div>
                       <div class="icon">
                           <i class="ion ion-bag"></i>
@@ -96,26 +96,48 @@
 import AdminSideBar from '@/components/Organisms/adminSidebar.vue';
 import AdminMenuBar from '@/components/Organisms/adminMenubar.vue';
 import AdminFooter from '@/components/Organisms/adminFooter.vue';
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import axios from 'axios';
 
 
 const selectedAppointmentStatus = ref('all');
-const totalAppointmentCount = ref(0);
-const appointments = ref();
-const getAppointmentCount = () => {
+const totalAppointmentsCount = ref(0);
+
+let getAppointmentCount = () => {
   axios.get('/api/stats/appointments', {
     params: {
       status: selectedAppointmentStatus.value,
     }
   })
   .then((response) => {
-    totalAppointmentCount.value = response.data.totalAppointmentCount;
+    totalAppointmentsCount.value = response.data.totalAppointmentsCount;
   })
   .catch((error) => {
     console.error('Error fetching appointment count:', error);
   });
 }
 
+const selectedDateRange = ref('today');
+const totalUsersCount = ref(0);
+
+const getUsersCount = () => {
+  axios.get('/api/stats/users', {
+
+    params: {
+      date_range: selectedDateRange.value,
+    }
+  })
+  .then((response) => {
+    totalUsersCount.value = response.data.totalUsersCount;
+  })
+    .catch((error) => {
+    console.error('Error fetching appointment count:', error);
+  });
+}
+
+onMounted(() => {
+  getAppointmentCount();
+  getUsersCount();
+});
 
 </script>
