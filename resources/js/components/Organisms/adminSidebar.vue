@@ -67,9 +67,9 @@
 
 
             <li class="nav-item">
-                <router-link to="/admin/profile" active-class="active" class="nav-link">
+                <router-link to="/admin/setting" active-class="active" class="nav-link">
                     <i class="nav-icon fas fa-user"></i>
-                        <p class="text-white" >Profile</p>
+                        <p class="text-white" >Setting</p>
                 </router-link>
             </li>
             <li class="nav-item">

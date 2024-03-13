@@ -8,6 +8,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\admin\ServiceController;
+use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\AppointmentController;
 use App\Http\Controllers\admin\DashboardStatController;
 use App\Http\Controllers\admin\AppointmentStatusController;
@@ -44,10 +45,13 @@ use App\Http\Controllers\admin\AppointmentStatusController;
 
 // Client Controller
 
-// Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
+
+// Setting Controller 
+Route::get('/api/settings', [SettingController::class, 'index']);
+Route::post('/api/settings', [SettingController::class, 'update']);
 
 // dashboard Status Controller 
-
 Route::get('/api/stats/appointments', [DashboardStatController::class, 'appointments']);
 Route::get('/api/stats/users', [DashboardStatController::class, 'users']);
 
@@ -95,7 +99,7 @@ Route::delete('/api/users', [UserController::class, 'bulkDelete']);
 Route::patch('/api/users/{user}/change-role', [UserController::class, 'changeRole']);
  
 
-// });
+});
 
 
 // contact Controller not finish
