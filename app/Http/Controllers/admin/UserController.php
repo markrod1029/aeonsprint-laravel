@@ -1,30 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(User $user)
+    public function index()
     {
-        //
-
-    
-
         $users = User::query()
-        ->when(request('query'), function ($query, $searchQuery) {
-            $query->where('name', 'like', "%{$searchQuery}%");
-        })
-        ->latest()
-        ->paginate(5);
+            ->when(request('query'), function ($query, $searchQuery) {
+                $query->where('name', 'like', "%{$searchQuery}%");
+            })
+            ->latest()
+            ->paginate(setting('pagination_limit'));
 
-        return response()->json($users);
+        return $users;
+    }
 
 
         // return $users;
@@ -43,7 +35,6 @@ class UserController extends Controller
     //     ];
     //   });
 
-    }
 
     /**
      * Show the form for creating a new resource.

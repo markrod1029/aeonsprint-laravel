@@ -19,17 +19,22 @@ class SettingSeeder extends Seeder
 
             [
                 'key' => 'app_name',
-                'value' => 'Test App'
+                'value' => 'Test App',
+                'created_at' => now()->today()
             ],
             
             [
                 'key' => 'date_format',
-                'value' => 'MM/DD/YYYY'
+                'value' => 'MM/DD/YYYY',
+                'created_at' => now()->today()
+
             ],
 
             [
                 'key' => 'pagination_limit',
-                'value' => '10'
+                'value' => '10',
+                'created_at' => now()->today()
+
             ],
 
         ]);
