@@ -29,6 +29,7 @@ import AdminUsers from './pages/admin/users/UserList.vue';
 import AdminAppointment from './pages/admin/appointment/AppointmentList.vue';
 import AdminAppointmentForm from './pages/admin/appointment/AppointmentForm.vue';
 import AdminSetting from './pages/admin/settings/UpdatedSetting.vue';
+import AdminProfile from './pages/admin/profiles/updateProfile.vue';
 
 export default [
   
@@ -260,6 +261,16 @@ export default [
         component: AdminSetting,
         meta: {
             title: 'Admin Setting Form'
+        }
+    },
+
+    
+    {
+        path: '/admin/profile',
+        name: 'admin.profile',
+        component: AdminProfile,
+        meta: {
+            title: 'Admin Profile Form'
         }
     },
 
