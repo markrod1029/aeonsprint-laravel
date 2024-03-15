@@ -34,7 +34,8 @@
                     <div class="text-center">
                         <input @change="handleFileChange" ref="fileInput" type="file" class="d-none">
 
-                        <img @click="openFileInput" class="profile-user-img img-circle" src="/noimage.png" alt="User profile picture">
+                        <img @click="openFileInput" class="profile-user-img img-circle"  :src="profilePictureURL ? profilePictureURL : form.avatar"   alt="User profile picture">
+
                     </div>
 
                     <h3 class="profile-username text-center">{{ form.name }}</h3>
@@ -81,26 +82,29 @@
                     </div>
 
                     <div class="tab-pane" id="changePassword">
-                        <form class="form-horizontal">
+                        <form @submit.prevent="handleChangePassword()" class="form-horizontal">
                             <div class="form-group row">
-                                <label for="currentPassword" class="col-sm-3 col-form-label">Current
+                                <label for="currentPassword"  class="col-sm-3 col-form-label">Current
                                     Password</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control " id="currentPassword" placeholder="Current Password">
+                                    <input v-model="changePasswordForm.currentPassword" :class="{'is-invalid' : errors && errors.current_password}"  type="text" class="form-control "  id="currentPassword" placeholder="Current Password">
+                                    <span class="text-danger text-sm" v-if="errors && errors.current_password">{{ errors.current_password[0] }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="newPassword" class="col-sm-3 col-form-label">New
                                     Password</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control " id="newPassword" placeholder="New Password">
+                                    <input v-model="changePasswordForm.password" type="text" class="form-control " :class="{'is-invalid' : errors && errors.password}"   id="newPassword" placeholder="New Password">
+                                    <span class="text-danger text-sm" v-if="errors && errors.password">{{ errors.password[0] }}</span>
+
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="passwordConfirmation" class="col-sm-3 col-form-label">Confirm
                                     New Password</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control " id="passwordConfirmation" placeholder="Confirm New Password">
+                                    <input v-model="changePasswordForm.passwordConfirmation" type="text" class="form-control " id="passwordConfirmation"   placeholder="Confirm New Password">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -130,7 +134,7 @@
 import AdminSideBar from '@/components/Organisms/adminSidebar.vue';
 import AdminMenuBar from '@/components/Organisms/adminMenubar.vue';
 import AdminFooter from '@/components/Organisms/adminFooter.vue';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, reactive } from 'vue';
 import axios from 'axios';
 import { useToastr } from '@/toastr.js';
 
@@ -176,11 +180,47 @@ const profilePictureURL = ref(null);
 let handleFileChange = (event) => {
     const file = event.target.files[0];
     profilePictureURL.value = URL.createObjectURL(file);
-    console.log('Profile picture URL:', profilePictureURL.value);
+
+    const formData = new FormData();
+    formData.append('profile_picture', file);   
+
+    axios.post('/api/upload-profile-image', formData)
+    .then((response) => {
+        toastr.success('Upload Profile Picture Success');
+    })
+}
+
+
+const changePasswordForm = reactive({
+    currentPassword: '',
+    password: '',
+    passwordConfirmation: ''
+});
+
+
+let handleChangePassword = () => {
+
+    axios.post('/api/change-user-password', changePasswordForm)
+    .then((response) => {
+        toastr.success(response.data.message);
+
+        for(const field in changePasswordForm)
+        {
+            changePasswordForm[field] = '';
+        }
+    })
+    .catch((error) => {
+    if(error.response && error.response.status === 422){
+    errors.value = error.response.data.errors; // I-update ang 'errors' variable base sa server response
+    }
+    })
+
 }
 
 onMounted (() => {
-    getUser();  
+    getUser();
+
+  
 })
 
 

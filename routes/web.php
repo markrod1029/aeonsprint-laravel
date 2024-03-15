@@ -6,13 +6,14 @@ use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\admin\ClientController;
+use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\admin\BusinessController;
 use App\Http\Controllers\admin\AppointmentController;
 use App\Http\Controllers\admin\DashboardStatController;
 use App\Http\Controllers\admin\AppointmentStatusController;
-use App\Http\Controllers\admin\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,10 +50,14 @@ use App\Http\Controllers\admin\ProfileController;
 Route::middleware('auth')->group(function () {
 
 
-    // Profile
+
+    // Profile COntroller
     Route::get('/api/profile', [ProfileController::class, 'index']);
     Route::put('/api/profile', [ProfileController::class, 'update']);
+    Route::post('/api/upload-profile-image', [ProfileController::class, 'uploadImages']);
+    Route::post('/api/change-user-password', [ProfileController::class, 'changePassword']);
 
+    
 // Setting Controller 
 Route::get('/api/settings', [SettingController::class, 'index']);
 Route::post('/api/settings', [SettingController::class, 'update']);
@@ -111,5 +116,11 @@ Route::patch('/api/users/{user}/change-role', [UserController::class, 'changeRol
 // contact Controller not finish
 Route::post('/contact', ContactController::class)->name('contact');
 
+    // Business COntroller
+Route::post('/api/business-card', [BusinessController::class, 'store']);
 
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)');
+
+Route::get('{any}', function () {
+    abort(404); // Ito ay magdadala sa iyo sa 404 error page
+})->where('any', '.*');
