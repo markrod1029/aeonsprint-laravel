@@ -80,96 +80,76 @@
 
                 <contactButton />       
 
+
+                
                   
    </div>
    
    
+   
+  <div class="modal fade" id="digitalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-bold text-2xl mx-auto">
+                  <h1>Let's connect now.</h1>
+                </div>
+                <!-- Form -->
+                <form @submit.prevent="handleSubmit()" ref="form" >
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label"> Name:</label>
+                            <input type="text" name="name" v-model="businessCardForm.name" class="form-control" id="name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label"> Email:</label>
+                            <input type="text" name="email" v-model="businessCardForm.email"  class="form-control" id="email" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Contact:</label>
+                            <input type="text" name="contact" v-model="businessCardForm.contact"  class="form-control" id="password" required />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary bg-primary mx-auto px-5 text-lg">submit</button>
+                    </div>
+                </form>
+              
+            </div>
+        </div>
+    </div>
   
    <Footer />
 
 
 </template>
-
-<script>
-// Import the Footer and MenuBar components
+<script setup>
 import Footer from '@/components/Organisms/footer.vue';
 import MenuBar from '@/components/Organisms/menubar.vue';
 import contactButton from '@/components/Atoms/button.vue';
+import { onMounted, reactive } from 'vue';
 
-export default {
-  components: {
-    // Register the Footer and MenuBar components
-    Footer,
-    MenuBar,
-    contactButton
-  },
+const showDeleteModal = () => {
+  $('#digitalForm').modal('show');
+};
 
-
-//   methods: {
-//     showWordpressDetails() {
-//       var wordpressSection = document.querySelector('.wordpress');
-//       if (wordpressSection.style.display === 'none') {
-//           wordpressSection.style.display = 'block';
-//       } else {
-//           wordpressSection.style.display = 'none';
-//       }
-//     },
-
-//     showWebAppDetails() {
-//         var webappSection = document.querySelector('.web-app');
-//         if(webappSection.style.display ==='none')
-//         {
-//             webappSection.style.display = 'block';
-//         } else {
-//             webappSection.style.display = 'none';
-            
-//         }
-//     },
-//     showLowCodeDetails(){
-//      var lowcodeSelection = document.querySelector('.low-code');
-
-//      if(lowcodeSelection.style.display === 'none'){
-//         lowcodeSelection.style.display = 'block';
-//      } else {
-//         lowcodeSelection.style.display = 'none';
-//      }
-
-//     },
-
-//     showMaintenanceDetails() {
-//         var maintenanceSelector = document.querySelector('.maintenance');
-//         if(maintenanceSelector.style.display === 'none'){
-//             maintenanceSelector.style.display = 'block';
-
-//         } else {
-//             maintenanceSelector.style.display = 'none';
-
-//         }
-
-//     }
+const businessCardForm = reactive({
+    name: '',
+    email: '',
+    contact: '',
+});
 
 
-//   }
+const handleSubmit = () => {
+
+    axios.post('/api/business-card', businessCardForm)
+    .then((response) => {
+    $('#digitalForm').modal('hide');
+    })
+};
 
 
-
-methods: {
-    showDetails(section) {
-      const sections = ['wordpress', 'webapp', 'lowcode', 'maintenance'];
-      for (const sec of sections) {
-        const el = document.querySelector('.' + sec);
-        if (el) {
-          if (sec === section) {
-            el.style.display = 'block';
-          } else {
-            el.style.display = 'none';
-          }
-        }
-      }
-    }
-  }
-}
-
-
-
+onMounted(() => {
+  showDeleteModal();
+});
 </script>

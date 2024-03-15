@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -15,41 +17,10 @@ class ProfileController extends Controller
     {
         //
 
-        return request()->user()->only(['name', 'email', 'role']);
+        return request()->user()->only(['name', 'email', 'role', 'avatar']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
+  
     /**
      * Update the specified resource in storage.
      * , string $id
@@ -68,15 +39,36 @@ class ProfileController extends Controller
     ]);
 }
 
+    public function uploadImages(Request $request) {
 
+        if($request->hasFile('profile_picture'))
+        {
+            $previousPath = $request->user()->getRawOriginal('avatar');
 
+            $link = Storage::put('/photos', $request->file('profile_picture'));
 
+            $request->user()->update(['avatar' => $link]);
+            
+            Storage::delete($previousPath);
+            return response()->json(['message' => 'Profile Picture upload Successfuly']);
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
+
+    public function changePassword(Request $request, UpdateUserPassword $updater) {
+
+
+
+        $updater->update(
+            auth()->user(),
+            [
+                'current_password' => $request->currentPassword,
+                'password' => $request->password,
+                'password_confirmation' => $request->passwordConfirmation,
+            ]
+            );
+
+            return response()->json(['message' => 'Password change Successfuly']);
+    }
+    
 }
