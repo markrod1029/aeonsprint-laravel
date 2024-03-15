@@ -121,6 +121,3 @@ Route::post('/api/business-card', [BusinessController::class, 'store']);
 
 Route::get('{view}', ApplicationController::class)->where('view', '(.*)');
 
-Route::get('{any}', function () {
-    abort(404); // Ito ay magdadala sa iyo sa 404 error page
-})->where('any', '.*');
