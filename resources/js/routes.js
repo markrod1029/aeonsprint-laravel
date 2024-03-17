@@ -2,6 +2,8 @@ import Dashboard from './components/Frontend/dashboard/index.vue';
 import AboutUs from './components/Frontend/abouts/about-us.vue';
 import Project from './components/Frontend/projects/project.vue';
 import ContactUs from './components/Frontend/contacts/contact-us.vue';
+import NotFound from './pages/error/NotFound.vue'; // 404 Error
+import LinkForm from './components/Frontend/form/linkForm.vue'; 
 
 // Services
 import ServiceSoftware from './components/Frontend/services/software.vue';
@@ -31,7 +33,7 @@ import AdminAppointmentForm from './pages/admin/appointment/AppointmentForm.vue'
 import AdminSetting from './pages/admin/settings/UpdatedSetting.vue';
 import AdminProfile from './pages/admin/profiles/updateProfile.vue';
 
-export default [
+const routes = [
   
     {
         path: '/',
@@ -65,6 +67,15 @@ export default [
         
     },
 
+    {
+        path: '/form/linkform',
+        name: 'form.linkform',
+        component: LinkForm,
+        meta: {
+            title: 'Link Form'
+        }
+    },
+    
     {
         path: '/projects/tripidkard',
         name: 'projects.tripidkard',
@@ -274,5 +285,17 @@ export default [
         }
     },
 
+ 
+     
+  {
+    path: '/:catchAll(.*)',
+    component: NotFound, // Gamitin ang iyong custom 404 component dito
+    meta: {
+      title: '404 Not Found'
+    }
+  }
 
 ];
+
+ 
+export default routes;

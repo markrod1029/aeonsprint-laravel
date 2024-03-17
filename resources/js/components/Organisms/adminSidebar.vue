@@ -1,9 +1,20 @@
+<!-- <script setup>
+// import { useAuthUserStore } from '../../stores/AuthUserStore';
+import { useRouter } from 'vue-router';
+import { useSettingStore } from '../../stores/SettingStore';
+
+const router = useRouter();
+// const authUserStore = useAuthUserStore();
+const settingStore = useSettingStore();
+
+</script> -->
+
 <template>
      <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
 <a href="index3.html" class="brand-link">
     <!-- <img  src="/storage/images/aeonsprint-logo1.png" alt="Aeonsprint Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-    <span class="brand-text font-weight-light">Aeonsaprint Solution</span>
+    <span class="brand-text font-weight-light"> Aeonsprint Solution</span>
 </a>
 
 <div class="sidebar">
@@ -11,7 +22,7 @@
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 
         <div class="image">
-            <img src="{{auth()->user()->avatar }}" width="200" class="img-circle elevation-2" alt="User Image">
+            <img src="{{ auth()->user()->avatar }}" width="200" class="img-circle elevation-2" alt="User Image">
             </div>
 
 <!-- https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg -->

@@ -14,7 +14,8 @@ class BusinessController extends Controller
             'name' => request('name'),
             'email' => request('email'),
             'contact' => request('contact'),
-            'status' => 'business Card',
+            'status' => request('status'),
+            'description' =>request('description')
         ]);
     }
 }

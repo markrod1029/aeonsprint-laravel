@@ -150,6 +150,17 @@ let getAppointments = (status) => {
     })
 }
 
+
+const updateAppointmentStatusCount = (id) => {
+    // Kunin ang status ng appointment na burahin
+    const deletedAppointmentStatus = appointments.value.data.find(appointment => appointment.id === id)?.status;
+    const statusToUpdate = appointmentStatus.value.find(status => status.name === deletedAppointmentStatus); 
+    statusToUpdate.count--;
+    
+    
+}
+
+
 const deleteAppointment = (id) => {
     Swal.fire({
         title: "Are you sure?",
@@ -165,6 +176,7 @@ const deleteAppointment = (id) => {
 
             axios.delete(`/api/appointments/${id}`)
             .then((response) => {
+                updateAppointmentStatusCount(id);
                 appointments.value.data = appointments.value.data.filter(appointment => appointment.id !== id); 
                 Swal.fire({
                     title: "Deleted!",

@@ -86,38 +86,36 @@
    </div>
    
    
-   
-  <div class="modal fade" id="digitalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-bold text-2xl mx-auto">
-                  <h1>Let's connect now.</h1>
-                </div>
-                <!-- Form -->
-                <form @submit.prevent="handleSubmit()" ref="form" >
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label"> Name:</label>
-                            <input type="text" name="name" v-model="businessCardForm.name" class="form-control" id="name" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label"> Email:</label>
-                            <input type="text" name="email" v-model="businessCardForm.email"  class="form-control" id="email" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Contact:</label>
-                            <input type="text" name="contact" v-model="businessCardForm.contact"  class="form-control" id="password" required />
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary bg-primary mx-auto px-5 text-lg">submit</button>
-                    </div>
-                </form>
-              
+   <div class="modal fade" id="digitalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style=" "> <!-- I-adjust ang laki ng modal base sa iyong preference -->
+            <div class="modal-header text-bold text-2xl mx-auto">
+                <h1>Let's connect now.</h1>
             </div>
+            <!-- Form -->
+            <form @submit.prevent="handleSubmit()" ref="form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <input type="text" name="name" v-model="businessCardForm.name" class="form-control" id="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Email:</label>
+                        <input type="text" name="email" v-model="businessCardForm.email" class="form-control" id="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Contact:</label>
+                        <input type="text" name="contact" v-model="businessCardForm.contact" class="form-control" id="password" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary bg-primary mx-auto px-5 text-lg">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
   
    <Footer />
 
@@ -137,6 +135,8 @@ const businessCardForm = reactive({
     name: '',
     email: '',
     contact: '',
+    status: 'business Card',
+
 });
 
 
