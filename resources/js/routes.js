@@ -2,7 +2,9 @@ import Dashboard from './components/Frontend/dashboard/index.vue';
 import AboutUs from './components/Frontend/abouts/about-us.vue';
 import Project from './components/Frontend/projects/project.vue';
 import ContactUs from './components/Frontend/contacts/contact-us.vue';
-import NotFound from './components/NotFound.vue'; // Import ng iyong custom 404 component
+import NotFound from './pages/error/NotFound.vue'; // 404 Error
+import LinkForm from './components/Frontend/form/linkForm.vue'; 
+
 // Services
 import ServiceSoftware from './components/Frontend/services/software.vue';
 import ServiceGraphicDesign from './components/Frontend/services/graphic-design.vue';
@@ -65,6 +67,15 @@ const routes = [
         
     },
 
+    {
+        path: '/form/linkform',
+        name: 'form.linkform',
+        component: LinkForm,
+        meta: {
+            title: 'Link Form'
+        }
+    },
+    
     {
         path: '/projects/tripidkard',
         name: 'projects.tripidkard',
@@ -274,8 +285,8 @@ const routes = [
         }
     },
 
-
-     // Panghuling ruta, ito ay para sa hindi matukoy na mga URI
+ 
+     
   {
     path: '/:catchAll(.*)',
     component: NotFound, // Gamitin ang iyong custom 404 component dito

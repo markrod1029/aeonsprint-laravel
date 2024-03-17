@@ -41,25 +41,25 @@
                             </li>
 
                             <li class="flex flex-row items-center space-x-2">
-                                <a href="/projects" class="hover:text-blue-500 text-decoration-none" to="/staff-augmentation" native="true" data-v-c17953ac>
+                                <a href="/projects" class=" hover:bg-blue-500 text-decoration-none" to="/staff-augmentation" native="true" data-v-c17953ac>
                                 Our Projects
                                 </a>
                             </li>
 
                             <li class="flex flex-row items-center space-x-2">
-                                <a href="/services" class="hover:text-blue-500 text-decoration-none" to="/staff-augmentation" native="true" data-v-c17953ac>
+                                <a href="/services" class=" hover:bg-blue-500 text-decoration-none" to="/staff-augmentation" native="true" data-v-c17953ac>
                                     Our Services
                                 </a>
                             </li>
 
                             <li class="flex flex-row items-center space-x-2">
-                                <a href="/contact-us" class="hover:text-blue-500 text-decoration-none" to="/staff-augmentation" native="true" data-v-c17953ac>
+                                <a href="/contact-us" class=" hover:bg-blue-500 text-decoration-none" to="/staff-augmentation" native="true" data-v-c17953ac>
                                 Contact us
                                 </a>
                             </li>
 
                             <li class="flex flex-row items-center space-x-2">
-                                <a href="/contact-us" class="hover:text-blue-500 text-decoration-none" to="/staff-augmentation" native="true" data-v-c17953ac>
+                                <a href="/form/linkform" class=" hover:bg-blue-500 text-decoration-none" to="/staff-augmentation" native="true" data-v-c17953ac>
                                 Link Form
                                 </a>
                             </li>   
@@ -91,7 +91,7 @@
 
                                 </i>
                             </div>
-                            <a href="https://www.facebook.com/aeonsprint" class="hover:text-blue-500 text-decoration-none" to="https://www.linkedin.com/company/outsoarph" native="true" data-v-c17953ac>
+                            <a href="https://www.facebook.com/aeonsprint" class=" hover:bg-blue-500 text-decoration-none" to="https://www.linkedin.com/company/outsoarph" native="true" data-v-c17953ac>
                                 Facebook
                             </a>
 
@@ -106,7 +106,7 @@
                                     </svg>
                                 </i>
                             </div>
-                            <a href="https://github.com/outsoarph" class="hover:text-blue-500 text-decoration-none" to="https://github.com/outsoarph" native="true" data-v-c17953ac>
+                            <a href="https://github.com/outsoarph" class="hover:bg-blue-500 text-decoration-none" to="https://github.com/outsoarph" native="true" data-v-c17953ac>
                             GitHub
                             </a>
                         </li>
@@ -119,7 +119,7 @@
                                     </svg>
                                 </i>
                             </div>
-                            <a href="https://www.linkedin.com/company/outsoarph" class="hover:text-blue-500 text-decoration-none" to="https://www.linkedin.com/company/outsoarph" native="true" data-v-c17953ac>
+                            <a href="https://www.linkedin.com/company/outsoarph" class="hover:bg-blue-500 text-decoration-none" to="https://www.linkedin.com/company/outsoarph" native="true" data-v-c17953ac>
                             Linkedin
                             </a>
                         </li>
